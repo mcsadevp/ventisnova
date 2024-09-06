@@ -20,11 +20,11 @@ const Navbar = () => {
           
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
-            <NavLink to={'/cursos'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
+            <NavLink to={'/CursosView'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/blog`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
+            <NavLink to={`/BlogView`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/contacto`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
+            <NavLink to={`/ContactoView`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
           </div>
         </div>
 
@@ -48,9 +48,9 @@ const Navbar = () => {
       {/* Menú desplegable para móviles */}
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-60 opacity-100' : ' max-h-0 opacity-0'} md:hidden bg-black/25`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <NavLink to={`/cursos`} className="block px-3 py-2 text-white rounded-md text-base">Cursos</NavLink>
-          <NavLink to={`/blog`} className="block px-3 py-2 text-white rounded-md text-base">Blog</NavLink>
-          <NavLink to={`/contacto`} className="block px-3 py-2 text-white rounded-md text-base">Contacto</NavLink>
+          <NavLink to={`/cursosView`} className="block px-3 py-2 text-white rounded-md text-base">Cursos</NavLink>
+          <NavLink to={`/blogView`} className="block px-3 py-2 text-white rounded-md text-base">Blog</NavLink>
+          <NavLink to={`/contactoView`} className="block px-3 py-2 text-white rounded-md text-base">Contacto</NavLink>
           <NavLink to={`/perfil`} className='flex px-5'>
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>
