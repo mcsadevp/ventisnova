@@ -7,7 +7,6 @@ function App() {
       <BrowserRouter>
         <Navbar />
       </BrowserRouter>
-    <h1 className='text-3xl font-poppins text-white text-center'>Hello</h1>
     
     
     </div>
