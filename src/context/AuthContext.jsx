@@ -13,69 +13,78 @@ import {
 export const authContext = createContext();
 
 /**
- * UseAuth() is a function that returns the context object that was created by the useContext() hook.
+ * Hook para utilizar el contexto de autenticación
  */
 export const useAuth = () => {
   const context = useContext(authContext);
   if (!context) {
-    console.log("error creating auth context");
+    console.error("Error creando el contexto de autenticación");
   }
   return context;
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState("");
-  /* A hook that is called when the component is mounted and when the component is updated. */
+  const [user, setUser] = useState(null); // Inicializar con null en vez de ""
+
+  /* Escucha los cambios de estado de autenticación */
   useEffect(() => {
     const subscribed = onAuthStateChanged(auth, (currentUser) => {
       if (!currentUser) {
-        console.log("no hay usuario suscrito");
-        setUser("");
+        console.log("No hay usuario suscrito");
+        setUser(null); // Cambiar a null
       } else {
         setUser(currentUser);
       }
     });
     return () => subscribed();
   }, []);
-  /**
-   * "register" is a function that takes two arguments, "email" and "password", and then calls the
-   * "createUserWithEmailAndPassword" function with the "auth" object and the "email" and "password"
-   * arguments.
-   */
+
+  /* Registro de usuario */
   const register = async (email, password) => {
-    const response = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(response);
+    try {
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error("Error durante el registro: ", error);
+      throw error;
+    }
   };
-  /**
-   * "login" is a function that takes two parameters, "email" and "password", and returns a promise that
-   * resolves to the result of calling "signInWithEmailAndPassword" with the parameters "auth", "email",
-   * and "password".
-   */
+
+  /* Inicio de sesión */
   const login = async (email, password) => {
-    const response = await signInWithEmailAndPassword(auth, email, password);
-    console.log(response);
+    try {
+      const response = await signInWithEmailAndPassword(auth, email, password);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.error("Error durante el inicio de sesión: ", error);
+      throw error;
+    }
   };
-  /**
-   * The loginWithGoogle function is an async function that returns the result of the signInWithPopup
-   * function, which takes the auth and responseGoogle parameters.
-   *The responseGoogle object is being returned.
-   */
+
+  /* Inicio de sesión con Google */
   const loginWithGoogle = async () => {
-    const responseGoogle = new GoogleAuthProvider();
-    return await signInWithPopup(auth, responseGoogle);
+    try {
+      const responseGoogle = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, responseGoogle);
+      return result;
+    } catch (error) {
+      console.error("Error durante el inicio de sesión con Google: ", error);
+      throw error;
+    }
   };
-  /**
-   * The logout function is an asynchronous function that calls the signOut function and logs the
-   * response to the console.
-   */
+
+  /* Cierre de sesión */
   const logout = async () => {
-    const response = await signOut(auth);
-    console.log(response);
+    try {
+      await signOut(auth);
+      console.log("Usuario desconectado");
+    } catch (error) {
+      console.error("Error durante el cierre de sesión: ", error);
+    }
   };
+
   return (
     <authContext.Provider
       value={{

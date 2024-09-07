@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CursosView from './pages/CursosView';
 import ContactoView from './pages/ContactoView';
 import BlogView from './pages/BlogView';
 import HomeView from './pages/HomeView';
-import LoginView from './pages/LoginView';
 import { AuthProvider } from './context/AuthContext';
 import RegisterFormView from './pages/RegisterFormView';
 import UserDashboardView from './pages/UserDashboardView';
@@ -22,10 +21,9 @@ function App() {
           <Route path="/cursosView" element={<CursosView />} />
           <Route path='/blogView' element={<BlogView />} />
           <Route path="/contactoView" element={<ContactoView />} />
-          <Route path="/perfil" element={<LoginView />} />
           <Route path="/register" element={<RegisterFormView />} />
           <Route path="/dashboard" element={<UserDashboardView />} />
-          <Route path="/login" element={<LoginFormView />} />
+          <Route path="/perfil" element={<LoginFormView />} />
         </Routes>
     </Router>
     </AuthProvider>
