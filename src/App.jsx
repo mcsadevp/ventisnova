@@ -6,6 +6,9 @@ import BlogView from './pages/BlogView';
 import HomeView from './pages/HomeView';
 import LoginView from './pages/LoginView';
 import { AuthProvider } from './context/AuthContext';
+import RegisterFormView from './pages/RegisterFormView';
+import UserDashboardView from './pages/UserDashboardView';
+import LoginFormView from './pages/LoginFormView';
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <Route path='/blogView' element={<BlogView />} />
           <Route path="/contactoView" element={<ContactoView />} />
           <Route path="/perfil" element={<LoginView />} />
+          <Route path="/register" element={<RegisterFormView />} />
+          <Route path="/dashboard" element={<UserDashboardView />} />
+          <Route path="/login" element={<LoginFormView />} />
         </Routes>
     </Router>
     </AuthProvider>
