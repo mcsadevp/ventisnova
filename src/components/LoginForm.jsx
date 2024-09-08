@@ -17,9 +17,15 @@ function LoginForm({ auth }) {
     }
   };
 
-  const handleGoogle = (e) => {
+  const handleGoogle = async (e) => {
     e.preventDefault();
-    auth.loginWithGoogle();
+    try {
+      await auth.loginWithGoogle();
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google:", error);
+      alert("Error al iniciar sesión con Google: " + error.message);
+    }
   };
 
   return (

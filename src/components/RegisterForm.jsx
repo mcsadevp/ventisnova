@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { useAuth } from "../context/AuthContext"; // Importa useAuth
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 
 function RegisterForm() {
   const [username, setUsername] = useState("");
@@ -9,6 +10,7 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   
   const { register, loginWithGoogle } = useAuth(); // Usa useAuth para obtener las funciones necesarias
+  const navigate = useNavigate(); // Usa useNavigate para redirigir
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ function RegisterForm() {
       setPassword("");
       setConfirmPassword("");
       alert("Registro exitoso");
+      navigate("/dashboard"); // Redirige al dashboard después del registro
     } catch (error) {
       console.error("Error al registrar:", error);
       alert("Error al registrar: " + error.message);
@@ -42,6 +45,7 @@ function RegisterForm() {
     try {
       await loginWithGoogle();
       alert("Inicio de sesión con Google exitoso");
+      navigate("/dashboard"); // Redirige al dashboard después de iniciar sesión con Google
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
       alert("Error al iniciar sesión con Google: " + error.message);
@@ -86,17 +90,17 @@ function RegisterForm() {
         <a href="#" className="text-sm text-gray-300 mt-4">¿Olvidaste tu contraseña?</a>
         <a href="#" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
         <button
-            type="button"
-            className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
-            onClick={handleGoogleSignIn}
-          >
-            <img
-              src="https://img.icons8.com/color/32/000000/google-logo.png"
-              alt="Logo de Google"
-              className="mr-2 text-xl"
-            />
-            Ingresar con Google
-          </button>
+          type="button"
+          className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
+          onClick={handleGoogleSignIn}
+        >
+          <img
+            src="https://img.icons8.com/color/32/000000/google-logo.png"
+            alt="Logo de Google"
+            className="mr-2 text-xl"
+          />
+          Ingresar con Google
+        </button>
       </form>
     </div>
   );
