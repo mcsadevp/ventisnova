@@ -34,7 +34,7 @@ function RegisterForm() {
       setPassword("");
       setConfirmPassword("");
       alert("Registro exitoso");
-      navigate("/dashboard"); // Redirige al dashboard después del registro
+      navigate("/dashboard"); 
     } catch (error) {
       console.error("Error al registrar:", error);
       alert("Error al registrar: " + error.message);

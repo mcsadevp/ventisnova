@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; // Importamos useAuth
 
-function LoginForm({ auth }) {
+function LoginForm() {
   const [userIdentifier, setUserIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login, loginWithGoogle, handlePasswordReset } = useAuth(); // Usamos useAuth
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await auth.login(userIdentifier, password);
+      await login(userIdentifier, password);
       navigate("/dashboard");
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -20,11 +22,28 @@ function LoginForm({ auth }) {
   const handleGoogle = async (e) => {
     e.preventDefault();
     try {
-      await auth.loginWithGoogle();
+      await loginWithGoogle();
       navigate("/dashboard");
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
       alert("Error al iniciar sesión con Google: " + error.message);
+    }
+  };
+
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+
+    if (!userIdentifier) {
+      alert("Por favor, ingresa tu correo electrónico registrado.");
+      return;
+    }
+
+    try {
+      await handlePasswordReset(userIdentifier);
+      alert("Se ha enviado un correo electrónico para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) para seguir las instrucciones.");
+    } catch (error) {
+      console.error("Error al enviar el correo electrónico de restablecimiento de contraseña:", error);
+      alert("Error al enviar el correo electrónico de restablecimiento. Revisa la consola para más detalles.");
     }
   };
 
@@ -49,7 +68,12 @@ function LoginForm({ auth }) {
         <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
           Iniciar Sesión
         </button>
-        <a href="#" className="text-sm text-gray-300 mt-4">¿Olvidaste tu contraseña?</a>
+        <button
+          onClick={handleForgotPassword}
+          className="text-sm text-gray-300 mt-4 cursor-pointer"
+        >
+          ¿Olvidaste tu contraseña?
+        </button>
         <a href="#" className="text-sm text-gray-300 mt-2">¿No tienes cuenta? Regístrate</a>
         <button
           type="button"

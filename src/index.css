@@ -8,3 +8,13 @@
   background: #1f332d;
   font-family: 'Poppins', sans-serif;
 }
+/* Estilo global para autocompletado en los input */
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important; /* Cambia el color del texto autocompletado */
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Elimina el color de fondo */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill::first-line {
+  font-family: 'Poppins', sans-serif; /* Asegura que la fuente no cambie */
+}
