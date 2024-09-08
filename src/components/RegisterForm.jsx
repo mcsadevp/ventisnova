@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
+import { useAuth } from "../context/AuthContext"; // Importa useAuth
 
-function RegisterForm({ auth }) {
+function RegisterForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  
+  const { register, loginWithGoogle } = useAuth(); // Usa useAuth para obtener las funciones necesarias
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ function RegisterForm({ auth }) {
       return;
     }
     try {
-      const result = await auth.register(email, password);
+      const result = await register(email, password);
       let user;
       if (result && result.user) {
         user = result.user;
@@ -32,6 +35,16 @@ function RegisterForm({ auth }) {
     } catch (error) {
       console.error("Error al registrar:", error);
       alert("Error al registrar: " + error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await loginWithGoogle();
+      alert("Inicio de sesión con Google exitoso");
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google:", error);
+      alert("Error al iniciar sesión con Google: " + error.message);
     }
   };
 
@@ -75,6 +88,7 @@ function RegisterForm({ auth }) {
         <button
             type="button"
             className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
+            onClick={handleGoogleSignIn}
           >
             <img
               src="https://img.icons8.com/color/32/000000/google-logo.png"
