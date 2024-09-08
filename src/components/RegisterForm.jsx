@@ -14,11 +14,8 @@ function RegisterForm({ auth }) {
       return;
     }
     try {
-      // Registrar el usuario
       const result = await auth.register(email, password);
       let user;
-
-      // Verificar si el resultado es un UserCredential o directamente un User
       if (result && result.user) {
         user = result.user;
       } else if (result && result.uid) {
@@ -26,16 +23,11 @@ function RegisterForm({ auth }) {
       } else {
         throw new Error("No se pudo obtener el usuario después del registro");
       }
-
-      // Actualizar el perfil del usuario con el nombre de usuario
       await updateProfile(user, { displayName: username });
-
-      // Limpiar los campos después del registro exitoso
       setUsername("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-
       alert("Registro exitoso");
     } catch (error) {
       console.error("Error al registrar:", error);
@@ -44,56 +36,53 @@ function RegisterForm({ auth }) {
   };
 
   return (
-    <div className="flex flex-col items-start justify-start text-white w-[350px]">
-      <h2 className="text-2xl font-bold mb-5 text-white">Registrarse</h2>
-      <form className="w-full flex flex-col" onSubmit={handleRegister}>
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Username"
-            className="w-full p-2 mt-1 bg-transparent text-white border-b-2 border-black outline-none"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="email"
-            placeholder="E-Mail"
-            className="w-full p-2 mt-1 bg-transparent text-white border-b-2 border-black outline-none"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder="Contraseña"
-            className="w-full p-2 mt-1 bg-transparent text-white border-b-2 border-black outline-none"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder="Confirmar contraseña"
-            className="w-full p-2 mt-1 bg-transparent text-white border-b-2 border-black outline-none"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="p-2 bg-green-600 text-white rounded cursor-pointer">
+    <div className="flex flex-col items-start justify-center bg-transparent text-white w-[304px] h-[430px] ml-[80px] mt-[50px]">
+      <h2 className="text-xl font-bold mb-6">Registrarse</h2>
+      <form className="w-full flex flex-col items-center" onSubmit={handleRegister}>
+        <input
+          type="text"
+          placeholder="Usuario"
+          className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="E-Mail"
+          className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirmar contraseña"
+          className="w-full mb-6 p-2 bg-transparent text-white border-b border-white outline-none"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
           Registrarse
         </button>
-        <div className="my-4 border-t border-gray-300"></div>
-        <div className="mt-4 flex flex-col items-center">
-          <a href="#" className="text-gray-300 text-sm mt-2">¿Ya tienes cuenta? Inicia sesión</a>
-        </div>
-        <button type="button" className="mt-5 p-2 flex items-center justify-center bg-white text-gray-800 rounded cursor-pointer">
-          <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo" className="mr-2" />
-          Ingresar con Google
-        </button>
+        <a href="#" className="text-sm text-gray-300 mt-4">¿Olvidaste tu contraseña?</a>
+        <a href="#" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
+        <button
+            type="button"
+            className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
+          >
+            <img
+              src="https://img.icons8.com/color/32/000000/google-logo.png"
+              alt="Logo de Google"
+              className="mr-2 text-xl"
+            />
+            Ingresar con Google
+          </button>
       </form>
     </div>
   );
