@@ -1,6 +1,7 @@
 import image5 from '../assets/image 5.png';
 import image6 from '../assets/image 6.png';
 import image11 from '../assets/image 11.png';
+import maskgroup from '../assets/Mask group.png';
 
 const HomeView = () => {
   return (
@@ -86,6 +87,62 @@ const HomeView = () => {
           </div>
         </div>
       </div>
+
+      {/* Banner secundario */}
+
+      <div className="bg-customLightGreen w-full h-52">
+       
+          <h2 className="text-2xl text-white text-center  pt-16 ">
+            Con el correcto asesoramiento, podés transformar tu <br /> pasión en éxito. ¡Acá empieza tu camino!
+          </h2>
+      
+      </div>
+
+{/* Mision y Vision container */}
+<div className="bg-customDarkGreen w-full h-80">
+  <div className="grid grid-cols-3 items-center gap-1 ">
+    {/* Mision */}
+    <div className="">
+      <h2 className='text-2xl text-white text-center pt-16'>Misión</h2>
+      <p className='text-white font-thin text-center'>En Ventisnova queremos <br/>
+      potenciar cada talento, <br/>
+      sin importar su rubro, <br/>
+      para convertirlos en <br/>
+      negocios exitosos.
+      </p>
+    </div>
+
+{/* Image */}
+<div className="flex justify-center pt-16  ">
+  <div className='relative p-4 bg-gradient-to-b from-customGreen to-customDarkGreen rounded-full'>
+  <img src={maskgroup} alt="" />
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    {/* Vision */}
+    <div className="">
+      <h2 className='text-2xl text-white text-center pt-16'>Visión</h2>
+      <p className='text-white font-thin text-center'>Aspiramos a una realidad en <br/>
+      la que emprender sea <br/>
+      sencillo y rentable, para que <br/>
+      cada quien pueda vivir <br/>
+      realmente de sus pasiones.
+      
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+
     </div>
   );
 };
