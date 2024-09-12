@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import RegisterFormView from './pages/RegisterFormView';
 import UserDashboardView from './pages/UserDashboardView';
 import LoginFormView from './pages/LoginFormView';
+import HabilidadesDigitalesView from './pages/HabilidadesDigitalesView';
 
 function App() {
   return (
@@ -16,11 +17,6 @@ function App() {
       <Router>
         
         <Navbar />
-      </BrowserRouter>
-    
-    
-    </div>
-  )
         <Routes>
           <Route path="/"  element={<HomeView />}/>
           <Route path="/cursosView" element={<CursosView />} />
@@ -29,6 +25,7 @@ function App() {
           <Route path="/register" element={<RegisterFormView />} />
           <Route path="/dashboard" element={<UserDashboardView />} />
           <Route path="/perfil" element={<LoginFormView />} />
+          <Route path="/habilidades-digitales" element={ <HabilidadesDigitalesView /> }/>
         </Routes>
     </Router>
     </AuthProvider>
