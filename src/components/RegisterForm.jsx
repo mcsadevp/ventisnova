@@ -1,54 +1,62 @@
 import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { useAuth } from "../context/AuthContext"; // Importa useAuth
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { NavLink, useNavigate } from "react-router-dom"; // Importa useNavigate
 
 function RegisterForm() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState(""); // Estado para el nombre de usuario
+  const [email, setEmail] = useState(""); // Estado para el email
+  const [password, setPassword] = useState(""); // Estado para la contraseña
+  const [confirmPassword, setConfirmPassword] = useState(""); // Estado para confirmar la contraseña
   
   const { register, loginWithGoogle } = useAuth(); // Usa useAuth para obtener las funciones necesarias
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
+  /**
+   * Maneja el registro de un nuevo usuario.
+   * @param {Event} e - Evento del formulario.
+   */
   const handleRegister = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene el comportamiento por defecto del formulario
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden");
+      alert("Las contraseñas no coinciden"); // Verifica que las contraseñas coincidan
       return;
     }
     try {
-      const result = await register(email, password);
+      const result = await register(email, password); // Intenta registrar al usuario
       let user;
       if (result && result.user) {
-        user = result.user;
+        user = result.user; // Obtiene el usuario registrado
       } else if (result && result.uid) {
-        user = result;
+        user = result; // Maneja el caso donde se obtiene el uid
       } else {
         throw new Error("No se pudo obtener el usuario después del registro");
       }
-      await updateProfile(user, { displayName: username });
+      await updateProfile(user, { displayName: username }); // Actualiza el perfil del usuario con el nombre de usuario
+      // Reinicia los campos del formulario
       setUsername("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      alert("Registro exitoso");
-      navigate("/dashboard"); 
+      alert("Registro exitoso"); // Muestra un mensaje de éxito
+      navigate("/dashboard"); // Redirige al dashboard después del registro
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Error al registrar: " + error.message);
+      alert("Error al registrar: " + error.message); // Muestra un mensaje de error
     }
   };
 
+  /**
+   * Maneja el inicio de sesión con Google.
+   */
   const handleGoogleSignIn = async () => {
     try {
-      await loginWithGoogle();
-      alert("Inicio de sesión con Google exitoso");
+      await loginWithGoogle(); // Intenta iniciar sesión con Google
+      alert("Inicio de sesión con Google exitoso"); // Muestra un mensaje de éxito
       navigate("/dashboard"); // Redirige al dashboard después de iniciar sesión con Google
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
-      alert("Error al iniciar sesión con Google: " + error.message);
+      alert("Error al iniciar sesión con Google: " + error.message); // Muestra un mensaje de error
     }
   };
 
@@ -61,38 +69,38 @@ function RegisterForm() {
           placeholder="Usuario"
           className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)} // Actualiza el estado del nombre de usuario
         />
         <input
           type="email"
           placeholder="E-Mail"
           className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)} // Actualiza el estado del email
         />
         <input
           type="password"
           placeholder="Contraseña"
           className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de la contraseña
         />
         <input
           type="password"
           placeholder="Confirmar contraseña"
           className="w-full mb-6 p-2 bg-transparent text-white border-b border-white outline-none"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza el estado de la confirmación de la contraseña
         />
         <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
           Registrarse
         </button>
-        <a href="#" className="text-sm text-gray-300 mt-4">¿Olvidaste tu contraseña?</a>
-        <a href="#" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
+        <NavLink to="/perfil" className="text-sm text-gray-300 mt-4"><span className="underline">Olvidé mi</span><span  className="text-green-300 underline"> contraseña</span></NavLink>
+        <NavLink to="/perfil" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</NavLink>
         <button
           type="button"
           className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
-          onClick={handleGoogleSignIn}
+          onClick={handleGoogleSignIn} // Maneja el inicio de sesión con Google
         >
           <img
             src="https://img.icons8.com/color/32/000000/google-logo.png"
