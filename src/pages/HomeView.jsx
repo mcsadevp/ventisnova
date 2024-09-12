@@ -13,20 +13,21 @@ const HomeView = () => {
           {/* Text Section */}
           <div className="md:w-1/2">
             <h2 className="text-4xl font-semibold text-white leading-tight">
-              Potencia tus habilidades, <br /> simplifica tu mundo.
+              ¡No dejes que la falta <br /> de experiencia te detenga!
             </h2>
             <p className="text-white text-lg mt-6">La tecnologia es una herramienta poderosa.</p>
             <p className="text-white font-thin">
-              En VentisNova, te ayudamos a descubrir como utilizarla para <br /> transformar tu vida y alcanzar tus sueños.
+              El camino hacia tu emprendimiento soñado <br />
+              empieza acá.
             </p>
 
-            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Inscribite ahora</button>
+            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Potenciate ahora</button>
           </div>
 
           {/* Image Section */}
           <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-            <div className="relative">
-             
+            <div className="relative p-4  rounded-full">
+              <div className="absolute inset-0 border-8  border-customGreen rounded-full "> </div>
               <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full" />
             </div>
           </div>
@@ -36,7 +37,7 @@ const HomeView = () => {
 
       <div className="bg-white w-full h-60">
         <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="text-2xl font-semibold text-black">Unite a nuestra comunidad online</h1>
+          <h1 className="text-2xl font-semibold text-black">Unite a nuestra comunidad de emprendedores.</h1>
           <button className="bg-customGreen text-black font-semibold px-6 py-2 mt-4 rounded-md">Registrate</button>
           <p className="text-black mt-4">Si ya estas registrado, iniciá sesion</p>
         </div>
@@ -92,7 +93,7 @@ const HomeView = () => {
       </div>
 
       {/* Mision y Vision container */}
-      <div className="bg-customDarkGreen w-full h-80">
+      <div className="bg-customDarkGreen w-full h-[800px]">
         <div className="grid grid-cols-3 items-center gap-1 ">
           {/* Mision */}
           <div className="">
@@ -124,6 +125,15 @@ const HomeView = () => {
               realmente de sus pasiones.
             </p>
           </div>
+        </div>
+        <div className="flex flex-col justify-center items-center mt-28 ">
+          <h1 className="text-2xl text-white text-center ">Valores</h1>
+          <div className="border-t border-gray-300 w-[600px] pl-44"></div>
+          <p className="text-white font-thin text-md mt-4">01. Empatía: Conectamos con tus experiencias, desafíos y sueños..</p>
+          <p className="text-white font-thin text-md mt-4">02. Innovación: Fomentamos el camino hacia nuevas y revolucionarias ideas.</p>
+          <p className="text-white font-thin text-md mt-4">03. Crecimiento Personal y Profesional: Nos enfocamos en tu crecimiento y potencialidad.</p>
+          <p className="text-white font-thin text-md mt-4">04. Pasión: Nos apasiona trabajar para generar una diferencia positiva en tus objetivos.</p>
+          <p className="text-white font-thin text-md mt-4">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas..</p>
         </div>
       </div>
     </div>
