@@ -26,13 +26,8 @@ const HomeView = () => {
           {/* Image Section */}
           <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
             <div className="relative">
-              <div
-                className="absolute -z-10 w-80 h-80 rounded-full -right-12 -top-12"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(16, 162, 116, 1), rgba(23, 72, 57, 0))',
-                }}
-              ></div>
-              <img src={image5} alt="Person with laptop" className="h-auto max-w-full" />
+             
+              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full" />
             </div>
           </div>
         </div>
@@ -91,58 +86,46 @@ const HomeView = () => {
       {/* Banner secundario */}
 
       <div className="bg-customLightGreen w-full h-52">
-       
-          <h2 className="text-2xl text-white text-center  pt-16 ">
-            Con el correcto asesoramiento, podés transformar tu <br /> pasión en éxito. ¡Acá empieza tu camino!
-          </h2>
-      
+        <h2 className="text-2xl text-white text-center  pt-16 ">
+          Con el correcto asesoramiento, podés transformar tu <br /> pasión en éxito. ¡Acá empieza tu camino!
+        </h2>
       </div>
 
-{/* Mision y Vision container */}
-<div className="bg-customDarkGreen w-full h-80">
-  <div className="grid grid-cols-3 items-center gap-1 ">
-    {/* Mision */}
-    <div className="">
-      <h2 className='text-2xl text-white text-center pt-16'>Misión</h2>
-      <p className='text-white font-thin text-center'>En Ventisnova queremos <br/>
-      potenciar cada talento, <br/>
-      sin importar su rubro, <br/>
-      para convertirlos en <br/>
-      negocios exitosos.
-      </p>
-    </div>
+      {/* Mision y Vision container */}
+      <div className="bg-customDarkGreen w-full h-80">
+        <div className="grid grid-cols-3 items-center gap-1 ">
+          {/* Mision */}
+          <div className="">
+            <h2 className="text-2xl text-white text-center pt-16">Misión</h2>
+            <p className="text-white font-thin text-center">
+              En Ventisnova queremos <br />
+              potenciar cada talento, <br />
+              sin importar su rubro, <br />
+              para convertirlos en <br />
+              negocios exitosos.
+            </p>
+          </div>
 
-{/* Image */}
-<div className="flex justify-center pt-16  ">
-  <div className='relative p-4 bg-gradient-to-b from-customGreen to-customDarkGreen rounded-full'>
-  <img src={maskgroup} alt="" />
-  </div>
-</div>
+          {/* Image */}
+          <div className="flex justify-center pt-16  ">
+            <div className="relative p-4 bg-gradient-to-b from-customGreen to-customDarkGreen rounded-full">
+              <img src={maskgroup} alt="" />
+            </div>
+          </div>
 
-
-
-
-
-
-
-
-    {/* Vision */}
-    <div className="">
-      <h2 className='text-2xl text-white text-center pt-16'>Visión</h2>
-      <p className='text-white font-thin text-center'>Aspiramos a una realidad en <br/>
-      la que emprender sea <br/>
-      sencillo y rentable, para que <br/>
-      cada quien pueda vivir <br/>
-      realmente de sus pasiones.
-      
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
-
+          {/* Vision */}
+          <div className="">
+            <h2 className="text-2xl text-white text-center pt-16">Visión</h2>
+            <p className="text-white font-thin text-center">
+              Aspiramos a una realidad en <br />
+              la que emprender sea <br />
+              sencillo y rentable, para que <br />
+              cada quien pueda vivir <br />
+              realmente de sus pasiones.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
