@@ -2,6 +2,7 @@ import React from 'react';
 import image10 from '../assets/image 10.png';
 import campaingCreators from '../assets/campaign-creators-qCi_MzVODoU-unsplash 1.png'
 import image13 from '../assets/image 13.png';
+import ondasFondo from '../assets/onda2.png'
 import { Link } from 'react-router-dom';
 import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
@@ -29,7 +30,7 @@ const faqData = [
   },
 ]
 
-const HabilidadesDigitalesView = () => {
+const MentoriasYTutoriasView = () => {
   return (
     <div className='flex flex-col w-full'>
         <div className='bg-custom-gradient w-full py-24 px-24 md:max-h-[600px]'>
@@ -70,6 +71,10 @@ const HabilidadesDigitalesView = () => {
             <Link to={ "/register" }><button className='bg-customGreen font-semibold px-6 py-2 my-4 rounded-md'>Registrate</button></Link>
             <p className='text-sm'>Si ya estas registrado, <Link to={ "/perfil" }><span className='underline text-sm cursor-pointer'>iniciá sesión</span></Link></p>
         </div>
+        <div className='relative'> {/* ondas */}
+          <div className='lg:h-[500px] lg:w-[1000px] absolute top-0 left-0 -z-10 hidden lg:block' style={{ backgroundImage: `url(${ondasFondo})`, backgroundSize: 'countain', backgroundPosition: 'center' }}>
+
+          </div>
         <div className="flex justify-center mt-12">
           <div className="container mx-auto">
             {/* Texto encima de las cards */}
@@ -80,7 +85,7 @@ const HabilidadesDigitalesView = () => {
             {/* Grid de cards y texto */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {/* Contenedor de las cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-12 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 gap-4">
                 {/* Primera card */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
                   <img 
@@ -147,12 +152,13 @@ const HabilidadesDigitalesView = () => {
               </div>
 
               {/* Texto a la derecha de las cards */}
-              <div className=" text-white p-4 rounded-lg md:w-[450px] hidden md:block">
+              <div className=" text-white p-4 rounded-lg md:w-[450px] hidden md:block ">
                 <h2 className="text-2xl font-semibold mb-4">¿Necesitás ayuda para llevar a tierra tus ideas de negocio?</h2>
                 <p>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
               </div>
             </div>
           </div>
+        </div>
         </div>
         <div className='mt-12'>
           <FAQ data={ faqData }/>
@@ -163,4 +169,4 @@ const HabilidadesDigitalesView = () => {
   )
 }
 
-export default HabilidadesDigitalesView
+export default MentoriasYTutoriasView
