@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import RegisterFormView from './pages/RegisterFormView';
 import UserDashboardView from './pages/UserDashboardView';
 import LoginFormView from './pages/LoginFormView';
+import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<RegisterFormView />} />
           <Route path="/dashboard" element={<UserDashboardView />} />
           <Route path="/perfil" element={<LoginFormView />} />
+          <Route path="/mentorias-y-tutorias" element={ <MentoriasYTutoriasView /> }/>
         </Routes>
     </Router>
     </AuthProvider>
