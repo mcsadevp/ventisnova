@@ -10,11 +10,12 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 
-/* Creating a context object. */
+/* Creación del objeto de contexto para la autenticación. */
 export const authContext = createContext();
 
 /**
- * Hook para utilizar el contexto de autenticación
+ * Hook para acceder al contexto de autenticación.
+ * @returns {Object} El contexto de autenticación.
  */
 export const useAuth = () => {
   const context = useContext(authContext);
@@ -24,23 +25,32 @@ export const useAuth = () => {
   return context;
 };
 
+/**
+ * Proveedor de autenticación que gestiona el estado del usuario.
+ * @param {Object} children - Componentes hijos que se renderizarán.
+ */
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // Inicializar con null en vez de ""
+  const [user, setUser] = useState(null); // Inicializa el estado del usuario como null.
 
-  /* Escucha los cambios de estado de autenticación */
+  /* Escucha los cambios en el estado de autenticación del usuario. */
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (!currentUser) {
         console.log("No hay usuario suscrito");
-        setUser(null);
+        setUser(null); // Si no hay usuario, establece el estado como null.
       } else {
-        setUser(currentUser);
+        setUser(currentUser); // Si hay un usuario, actualiza el estado.
       }
     });
-    return () => unsubscribe();
+    return () => unsubscribe(); // Limpia el suscriptor al desmontar el componente.
   }, []);
 
-  /* Registro de usuario */
+  /**
+   * Registra un nuevo usuario con email y contraseña.
+   * @param {string} email - El email del usuario.
+   * @param {string} password - La contraseña del usuario.
+   * @returns {Promise} Respuesta de Firebase.
+   */
   const register = async (email, password) => {
     try {
       const response = await createUserWithEmailAndPassword(auth, email, password);
@@ -52,7 +62,12 @@ export function AuthProvider({ children }) {
     }
   };
 
-  /* Inicio de sesión */
+  /**
+   * Inicia sesión con email y contraseña.
+   * @param {string} email - El email del usuario.
+   * @param {string} password - La contraseña del usuario.
+   * @returns {Promise} Respuesta de Firebase.
+   */
   const login = async (email, password) => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
@@ -64,7 +79,10 @@ export function AuthProvider({ children }) {
     }
   };
 
-  /* Inicio de sesión con Google */
+  /**
+   * Inicia sesión utilizando Google.
+   * @returns {Promise} Resultado de la autenticación de Google.
+   */
   const loginWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -76,7 +94,10 @@ export function AuthProvider({ children }) {
     }
   };
 
-  /* Cierre de sesión */
+  /**
+   * Cierra la sesión del usuario.
+   * @returns {Promise} Respuesta de Firebase.
+   */
   const logout = async () => {
     try {
       await signOut(auth);
@@ -87,7 +108,11 @@ export function AuthProvider({ children }) {
     }
   };
 
-  /* Recuperación de contraseña */
+  /**
+   * Envía un correo electrónico para restablecer la contraseña.
+   * @param {string} email - El email del usuario.
+   * @returns {Promise} Respuesta de Firebase.
+   */
   const handlePasswordReset = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);

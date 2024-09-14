@@ -1,49 +1,61 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Importamos useAuth
 
 function LoginForm() {
-  const [userIdentifier, setUserIdentifier] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const { login, loginWithGoogle, handlePasswordReset } = useAuth(); // Usamos useAuth
+  const [userIdentifier, setUserIdentifier] = useState(""); // Estado para el identificador del usuario (email o nombre de usuario)
+  const [password, setPassword] = useState(""); // Estado para la contraseña
+  const navigate = useNavigate(); // Hook para redirigir a otras rutas
+  const { login, loginWithGoogle, handlePasswordReset } = useAuth(); // Usamos useAuth para obtener funciones de autenticación
 
+  /**
+   * Maneja el inicio de sesión con email y contraseña.
+   * @param {Event} e - Evento del formulario.
+   */
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene el comportamiento por defecto del formulario
     try {
-      await login(userIdentifier, password);
-      navigate("/dashboard");
+      await login(userIdentifier, password); // Intenta iniciar sesión
+      navigate("/dashboard"); // Redirige al dashboard si el inicio de sesión es exitoso
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      alert("Error al iniciar sesión: " + error.message);
+      alert("Error al iniciar sesión: " + error.message); // Muestra un mensaje de error
     }
   };
 
+  /**
+   * Maneja el inicio de sesión con Google.
+   * @param {Event} e - Evento del botón.
+   */
   const handleGoogle = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene el comportamiento por defecto del botón
     try {
-      await loginWithGoogle();
-      navigate("/dashboard");
+      await loginWithGoogle(); // Intenta iniciar sesión con Google
+      navigate("/dashboard"); // Redirige al dashboard si el inicio de sesión es exitoso
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
-      alert("Error al iniciar sesión con Google: " + error.message);
+      alert("Error al iniciar sesión con Google: " + error.message); // Muestra un mensaje de error
     }
   };
 
+  /**
+   * Maneja la solicitud de restablecimiento de contraseña.
+   * @param {Event} e - Evento del botón.
+   */
   const handleForgotPassword = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene el comportamiento por defecto del botón
 
     if (!userIdentifier) {
-      alert("Por favor, ingresa tu correo electrónico registrado.");
+      alert("Por favor, ingresa tu correo electrónico registrado."); // Verifica que se haya ingresado un email
       return;
     }
 
     try {
-      await handlePasswordReset(userIdentifier);
+      await handlePasswordReset(userIdentifier); // Intenta enviar el correo de restablecimiento
       alert("Se ha enviado un correo electrónico para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) para seguir las instrucciones.");
     } catch (error) {
       console.error("Error al enviar el correo electrónico de restablecimiento de contraseña:", error);
-      alert("Error al enviar el correo electrónico de restablecimiento. Revisa la consola para más detalles.");
+      alert("Error al enviar el correo electrónico de restablecimiento. Revisa la consola para más detalles."); // Muestra un mensaje de error
     }
   };
 
@@ -56,25 +68,28 @@ function LoginForm() {
           placeholder="Usuario o E-mail"
           className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
           value={userIdentifier}
-          onChange={(e) => setUserIdentifier(e.target.value)}
+          onChange={(e) => setUserIdentifier(e.target.value)} // Actualiza el estado del identificador del usuario
         />
         <input
           type="password"
           placeholder="Contraseña"
           className="w-full mb-6 p-2 bg-transparent text-white border-b border-white outline-none"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de la contraseña
         />
         <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
           Iniciar Sesión
         </button>
         <button
+          type="button"
           onClick={handleForgotPassword}
           className="text-sm text-gray-300 mt-4 cursor-pointer"
         >
-          ¿Olvidaste tu contraseña?
+          <span className="underline">Olvidé mi</span><span  className="text-green-300 underline"> contraseña</span>
         </button>
-        <a href="#" className="text-sm text-gray-300 mt-2">¿No tienes cuenta? Regístrate</a>
+        <NavLink to="/register" className="text-sm text-gray-300 mt-2">
+          ¿No tienes cuenta? Regístrate
+        </NavLink>
         <button
           type="button"
           onClick={handleGoogle}
