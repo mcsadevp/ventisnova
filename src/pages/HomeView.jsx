@@ -9,19 +9,27 @@ const HomeView = () => {
       <div className="h-1/2  bg-custom-gradient ">
         <nav className="flex justify-between items-center p-6">{/* Navigation can go here if needed */}</nav>
 
-        <div className="flex flex-col items-center justify-center px-6 py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-32 py-12">
           {/* Text Section */}
-          <div className="w-full text-center">
-            <h2 className="text-3xl font-semibold text-white leading-tight">
+          <div className="md:w-1/2">
+            <h2 className="text-4xl font-semibold text-white leading-tight">
               ¡No dejes que la falta <br /> de experiencia te detenga!
             </h2>
             <p className="text-white text-lg mt-6">La tecnologia es una herramienta poderosa.</p>
-            <p className="text-white font-thin mt-4 md:hidden">
+            <p className="text-white font-thin hidden md:block">
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </p>
 
-            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8">Potenciate ahora</button>
+            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Potenciate ahora</button>
+          </div>
+
+          {/* Image Section */}
+          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center hidden md:block">
+            <div className="relative p-4  rounded-full">
+              {/* <div className="absolute  w-20 h-20 bg-customDarkGreen  border-customGreen rounded-full "> </div> */}
+              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full" />
+            </div>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@
 :root {
   background: #1f332d;
   font-family: 'Poppins', sans-serif;
+
 }
 /* Estilo global para autocompletado en los input */
 input:-webkit-autofill {
@@ -18,3 +19,8 @@ input:-webkit-autofill {
 input:-webkit-autofill::first-line {
   font-family: 'Poppins', sans-serif; /* Asegura que la fuente no cambie */
 }
+
+/* .bg-custom-gradient {
+  @apply bg-gradient-to-b
+  from -[#174839] to-[#44A385]
+} */
