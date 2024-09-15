@@ -2,13 +2,17 @@ import image5 from '../assets/image 5.png';
 import image6 from '../assets/image 6.png';
 import image11 from '../assets/image 11.png';
 import maskgroup from '../assets/Mask group.png';
+import { NavLink } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const HomeView = () => {
   return (
     <div>
+ 
       <div className="h-1/2  bg-custom-gradient ">
+     
         <nav className="flex justify-between items-center p-6">{/* Navigation can go here if needed */}</nav>
-
+        <Navbar/>
         <div className="flex flex-col items-center justify-center px-6 py-12">
           {/* Text Section */}
           <div className="w-full text-center">
@@ -20,8 +24,9 @@ const HomeView = () => {
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </p>
-
-            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8">Potenciate ahora</button>
+            <NavLink to="/mentorias-y-tutorias">
+              <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8">Potenciate ahora</button>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -30,8 +35,11 @@ const HomeView = () => {
       <div className="bg-white w-full h-60 flex justify-center items-center">
         <div className="flex flex-col justify-center items-center text-center">
           <h1 className="text-xl sm:text-2xl font-semibold text-black">Unite a nuestra comunidad de emprendedores.</h1>
-          <button className="bg-customGreen text-black font-semibold px-6 py-2 mt-4 rounded-md">Registrate</button>
-          <p className="text-black mt-4">Si ya estas registrado, iniciá sesion</p>
+
+          <NavLink to="/register">
+            <button className="bg-customGreen text-black font-semibold px-6 py-2 mt-4 rounded-md">Registrate</button>
+            <p className="text-black mt-4"></p>
+          </NavLink>
         </div>
       </div>
 
@@ -70,11 +78,13 @@ const HomeView = () => {
 
           {/* Right Text Section (appears at the top on mobile) */}
           <div className="rounded-lg">
-            <h2 className="text-1xl text-white mb-4">Habilidades Digitales</h2>
+            <h2 className="text-1xl text-white mb-4">Mentorías y Tutorías</h2>
             <p className="text-white font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
             <p className="text-white font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
             <div className="hidden md:flex justify-center mt-4">
+            <NavLink to="/mentorias-y-tutorias">
               <button className="bg-customGreen text-white px-16 py-2 mt-4 rounded-md">Inscribirme</button>
+            </NavLink>
             </div>
           </div>
         </div>

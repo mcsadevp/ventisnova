@@ -11,7 +11,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="bg-transparent w-full z-10">
+    <nav className="bg-[linear-gradient(180deg,#1F332D_0%,rgba(30,87,70,0)_98.5%)] w-full z-10 text-white">
       <div className="md:mx-16 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo y enlaces */}
         <div className="flex items-center space-x-8">

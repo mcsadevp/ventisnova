@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import CursosView from './pages/CursosView';
 import ContactoView from './pages/ContactoView';
 import BlogView from './pages/BlogView';
@@ -9,27 +8,27 @@ import RegisterFormView from './pages/RegisterFormView';
 import UserDashboardView from './pages/UserDashboardView';
 import LoginFormView from './pages/LoginFormView';
 import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
+import AccountFormView from './pages/AccountFormView.jsx';
 
 function App() {
   return (
-   <div>
-    <AuthProvider>
-      <Router>
-        
-        <Navbar />
-        <Routes>
-          <Route path="/"  element={<HomeView />}/>
-          <Route path="/cursosView" element={<CursosView />} />
-          <Route path='/blogView' element={<BlogView />} />
-          <Route path="/contactoView" element={<ContactoView />} />
-          <Route path="/register" element={<RegisterFormView />} />
-          <Route path="/dashboard" element={<UserDashboardView />} />
-          <Route path="/perfil" element={<LoginFormView />} />
-          <Route path="/mentorias-y-tutorias" element={ <MentoriasYTutoriasView /> }/>
-        </Routes>
-    </Router>
-    </AuthProvider>
-   </div>
+    <div>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomeView />} />
+            <Route path="/cursosView" element={<CursosView />} />
+            <Route path='/blogView' element={<BlogView />} />
+            <Route path="/contactoView" element={<ContactoView />} />
+            <Route path="/register" element={<RegisterFormView />} />
+            <Route path="/dashboard" element={<UserDashboardView />} />
+            <Route path="/perfil" element={<LoginFormView />} />
+            <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
+            <Route path="/contact" element={<AccountFormView/>}/>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </div>
 
   );
 }

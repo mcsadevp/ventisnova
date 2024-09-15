@@ -6,6 +6,7 @@ import ondasFondo from '../assets/onda2.png'
 import { Link } from 'react-router-dom';
 import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
+import Navbar from '../components/Navbar';
 
 const faqData = [
   {
@@ -33,6 +34,7 @@ const faqData = [
 const MentoriasYTutoriasView = () => {
   return (
     <div className='flex flex-col w-full'>
+        <Navbar className="bg-[linear-gradient(180deg,#1F332D_0%,rgba(30,87,70,0)_98.5%)] w-full z-10 text-white"/>
         <div className='bg-custom-gradient w-full py-24 px-24 md:max-h-[600px]'>
             <h1 className='text-white md:text-5xl text-3xl font-bold md:max-w-[400px] '>MENTORÍAS Y TUTORÍAS</h1>
             <ul className='mt-8 space-y-2 list-disc text-white md:pl-5 pl-3'>
