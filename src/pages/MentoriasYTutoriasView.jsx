@@ -54,17 +54,24 @@ const MentoriasYTutoriasView = () => {
             </div>
         </div>
 
-        <div className='w-full mx-auto flex flex-col md:flex-row'>
-            <div className="flex items-center justify-center">
-            <img src={ image13 } alt="Grupo de estudiantes" />
-            </div>
-            <div className="md:w-1/2 mt-8 md:mt-24 md:pl-8 text-white px-3 mb-10 text-lg">
-                <p>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
-            <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5'>
-                <li>Clases grupales.</li>
-                <li>Canales de chat abiertos y consultas.</li>
-            </ul>
-            </div>
+        <div className='w-full mx-auto flex flex-col md:flex-row relative'>
+          {/* Imagen */}
+          <div className="flex items-center justify-center md:w-auto w-full h-full md:h-auto absolute md:relative">
+              <img
+                  src={image13}
+                  alt="Grupo de estudiantes"
+                  className="w-full h-full object-cover md:object-contain"
+              />
+          </div>
+          
+          {/* Texto */}
+          <div className="md:w-1/2 mt-8 md:mt-24 md:pl-8 text-white px-3 mb-10 text-lg relative z-10 bg-customDarkGreen p-5 md:z-auto mx-5 md:mx-0">
+              <p>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
+              <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5'>
+                  <li>Clases grupales.</li>
+                  <li>Canales de chat abiertos y consultas.</li>
+              </ul>
+          </div>
         </div>
         <div className='w-full h-[188px] bg-white flex justify-center items-center flex-col'>
             <h1 className='text-xl font-semibold text-center'>Unite a nuestra comunidad de emprendedores</h1>
@@ -85,7 +92,7 @@ const MentoriasYTutoriasView = () => {
             {/* Grid de cards y texto */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {/* Contenedor de las cards */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 gap-8 px-4 md:px-0">
                 {/* Primera card */}
                 <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
                   <img 
@@ -154,7 +161,7 @@ const MentoriasYTutoriasView = () => {
               {/* Texto a la derecha de las cards */}
               <div className=" text-white p-4 rounded-lg md:w-[450px] hidden md:block ">
                 <h2 className="text-2xl font-semibold mb-4">¿Necesitás ayuda para llevar a tierra tus ideas de negocio?</h2>
-                <p>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
+                <p className='text-lg'>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
               </div>
             </div>
           </div>
