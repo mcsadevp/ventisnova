@@ -1,35 +1,65 @@
+import image19 from '../assets/image 19.png';
+
+import { useState } from 'react';
+
 const BlogView = () => {
+  //track current page
+  const [currentPage, setCurrentPage] = useState(1);
+
+  //Function to handle page click
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
-    <div>
-      <div className="">
+    <div className="min-h-screen flex flex-col  items-center justify-center ">
+      <div className="text-center mb-8">
         <h2 className="text-2xl text-white">Blog</h2>
         <p className="text-lg text-white">Articulos</p>
       </div>
       {/* containers */}
-      <div className=" flex flex-col justify-center">
-        <div className="grid grid-cols-3 md:grid-cols-1 gap-4 width-[300px] h-[300px] ">
-          <div className="bg-customDarkGreen p-8 border ">
-            <img src="" alt="" />
-            <h2 className="text-2xl text-white"></h2>
+      <div className="space-y-8 w-full max-w-3xl ">
+        {/* Container 1 */}
+        <div className=" flex flex-col md:flex-row items-center justify-between bg-customDarkGreen  border rounded-lg  md:items-start ">
+          <img src={image19} alt="" className="w-1/2 " />
+          <div className="ml-8 md:ml-0 pl-2 pt-2 ">
+            <h2 className="text-1xl text-white mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
 
-            <p className="text-lg text-white"></p>
-            <button className="bg-lightGreen text-white font-semibold px-6 py-2 mt-4 rounded-md"></button>
-          </div>
-          <div className="bg-customDarkGreen p-8 border ">
-            <img src="" alt="" />
-            <h2 className="text-2xl text-white"></h2>
-
-            <p className="text-lg text-white"></p>
-            <button className="bg-lightGreen text-white font-semibold px-6 py-2 mt-4 rounded-md"></button>
-          </div>
-          <div className="bg-customDarkGreen p-8 border ">
-            <img src="" alt="" />
-            <h2 className="text-2xl text-white"></h2>
-
-            <p className="text-lg text-white"></p>
-            <button className="bg-lightGreen text-white font-semibold px-6 py-2 mt-4 rounded-md"></button>
+            <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
+            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
           </div>
         </div>
+
+        {/* Container 2 */}
+        <div className=" flex flex-col md:flex-row items-center justify-between bg-customDarkGreen  border rounded-lg  md:items-start ">
+          <div className="ml-8 md:ml-0 pl-2 pt-2 ">
+            <h2 className="text-1xl text-white pt-2 mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
+
+            <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
+            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
+          </div>
+          <img src={image19} alt="" className="w-1/2 " />
+        </div>
+
+        {/* container 3 */}
+        <div className=" flex flex-col md:flex-row items-center justify-between bg-customDarkGreen  border rounded-lg  md:items-start ">
+          <img src={image19} alt="" className="w-1/2 " />
+          <div className="ml-8 md:ml-0 pl-2 pt-2 ">
+            <h2 className="text-1xl text-white mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
+
+            <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
+            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Pagination at the bottom */}
+      <div className="mt-8 flex space-x-4">
+        {[1, 2, 3, 4].map((page) => (
+          <button key={page} onClick={() => handlePageClick(page)} className={`px-4 py-2 rounded-md ${currentPage === page ? 'bg-customGreen text-white' : 'bg-transparent text-white'}`}>
+            {page}
+          </button>
+        ))}
       </div>
     </div>
   );
