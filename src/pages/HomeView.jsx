@@ -1,9 +1,9 @@
-import image5 from '../assets/image 5.png';
 import image6 from '../assets/image 6.png';
 import image11 from '../assets/image 11.png';
 import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const HomeView = () => {
   return (
@@ -143,6 +143,7 @@ const HomeView = () => {
           <p className="text-white text-md font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
