@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { IoSearchOutline, IoClose, IoMenu, IoPersonOutline } from "react-icons/io5"
 import { NavLink } from 'react-router-dom';
 import  logo  from '../assets/Logo.png'
-
+import { useAuth } from '../context/AuthContext'; // Importa el hook de autenticación
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { user } = useAuth(); // Obtén el usuario del contexto
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -33,7 +34,7 @@ const Navbar = () => {
           <NavLink to={`/buscar`}>
             <IoSearchOutline className="h-6 w-6 text-white" />
           </NavLink>
-          <NavLink to={`/perfil`} className='md:block hidden'>
+          <NavLink to={user ? '/dashboard' : '/perfil'} className='md:block hidden'> {/* Ruta dinámica */}
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>
 
