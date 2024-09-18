@@ -10,6 +10,8 @@ import LoginFormView from './pages/LoginFormView';
 import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 import ContactView from './pages/ContactView';
 import AlertProvider from './context/AlertContext';
+import AddArticleView from './pages/AddArticleView'; // Corregido el nombre de la importación
+
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth(); // Obtén el usuario del contexto
@@ -27,7 +29,8 @@ function App() {
               <Route path="/cursosView" element={<CursosView />} />
               <Route path='/blogView' element={<BlogView />} />
               <Route path="/register" element={<RegisterFormView />} />
-              <Route path="/dashboard" element={<ProtectedRoute><UserDashboardView /></ProtectedRoute>} /> {/* Protege la ruta */}
+              <Route path="/dashboard" element={<ProtectedRoute><UserDashboardView /></ProtectedRoute>} />
+              <Route path="/addarticle" element={<ProtectedRoute><AddArticleView /></ProtectedRoute>} /> {/* Corregido el nombre de la ruta */}
               <Route path="/perfil" element={<LoginFormView />} />
               <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
               <Route path="/contact" element={<ContactView/>}/>

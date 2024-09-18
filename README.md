@@ -8,7 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-$ npm install emailjs-com
+npm install @emailjs/browser
 page https://www.emailjs.com/
 conectar email 
 crear plantilla 
