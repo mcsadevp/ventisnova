@@ -24,7 +24,9 @@ sendPasswordResetEmail,
 ### Contexto de Autenticación
 Se crea un contexto para la autenticación que permite a los componentes acceder a la información del usuario y las funciones de autenticación:
 
+```javascript 
 export const authContext = createContext();
+```
 
 ### Hook `useAuth`
 Este hook personalizado permite a los componentes acceder al contexto de autenticación:

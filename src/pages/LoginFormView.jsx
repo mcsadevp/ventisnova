@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuth } from "../context/AuthContext";
 import LoginForm from "../components/LoginForm";
 import backgroundImage from "../assets/page-login.png";

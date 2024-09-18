@@ -17,14 +17,13 @@ const Navbar = () => {
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <NavLink to={`/`}><img src={ logo } className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
-          
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
             <NavLink to={'/CursosView'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
             <NavLink to={`/BlogView`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/ContactoView`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
+            <NavLink to={`/Contact`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
           </div>
         </div>
 
