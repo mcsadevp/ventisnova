@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { useAuth } from "../context/AuthContext"; // Importa useAuth
 import { NavLink, useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useAlert } from '../context/AlertContext'; // Importa useAlert
 
 function RegisterForm() {
+  const { setAlert } = useAlert(); // Usa setAlert del contexto
   const [username, setUsername] = useState(""); // Estado para el nombre de usuario
   const [email, setEmail] = useState(""); // Estado para el email
   const [password, setPassword] = useState(""); // Estado para la contraseña
@@ -19,7 +21,7 @@ function RegisterForm() {
   const handleRegister = async (e) => {
     e.preventDefault(); // Previene el comportamiento por defecto del formulario
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden"); // Verifica que las contraseñas coincidan
+      setAlert("Las contraseñas no coinciden"); // Verifica que las contraseñas coincidan
       return;
     }
     try {
@@ -38,11 +40,11 @@ function RegisterForm() {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      alert("Registro exitoso"); // Muestra un mensaje de éxito
+      setAlert("Registro exitoso"); // Muestra un mensaje de éxito
       navigate("/dashboard"); // Redirige al dashboard después del registro
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Error al registrar: " + error.message); // Muestra un mensaje de error
+      setAlert("Error al registrar: " + error.message); // Muestra un mensaje de error
     }
   };
 
@@ -52,11 +54,11 @@ function RegisterForm() {
   const handleGoogleSignIn = async () => {
     try {
       await loginWithGoogle(); // Intenta iniciar sesión con Google
-      alert("Inicio de sesión con Google exitoso"); // Muestra un mensaje de éxito
+      setAlert("Inicio de sesión con Google exitoso"); // Muestra un mensaje de éxito
       navigate("/dashboard"); // Redirige al dashboard después de iniciar sesión con Google
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
-      alert("Error al iniciar sesión con Google: " + error.message); // Muestra un mensaje de error
+      setAlert("Error al iniciar sesión con Google: " + error.message); // Muestra un mensaje de error
     }
   };
 

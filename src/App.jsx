@@ -9,6 +9,7 @@ import UserDashboardView from './pages/UserDashboardView';
 import LoginFormView from './pages/LoginFormView';
 import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 import ContactView from './pages/ContactView';
+import AlertProvider from './context/AlertContext';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth(); // Obtén el usuario del contexto
@@ -19,18 +20,20 @@ function App() {
   return (
     <div>
       <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/cursosView" element={<CursosView />} />
-            <Route path='/blogView' element={<BlogView />} />
-            <Route path="/register" element={<RegisterFormView />} />
-            <Route path="/dashboard" element={<ProtectedRoute><UserDashboardView /></ProtectedRoute>} /> {/* Protege la ruta */}
-            <Route path="/perfil" element={<LoginFormView />} />
-            <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
-            <Route path="/contact" element={<ContactView/>}/>
-          </Routes>
-        </Router>
+        <AlertProvider> {/* Envuelve la aplicación con AlertProvider */}
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomeView />} />
+              <Route path="/cursosView" element={<CursosView />} />
+              <Route path='/blogView' element={<BlogView />} />
+              <Route path="/register" element={<RegisterFormView />} />
+              <Route path="/dashboard" element={<ProtectedRoute><UserDashboardView /></ProtectedRoute>} /> {/* Protege la ruta */}
+              <Route path="/perfil" element={<LoginFormView />} />
+              <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
+              <Route path="/contact" element={<ContactView/>}/>
+            </Routes>
+          </Router>
+        </AlertProvider>
       </AuthProvider>
     </div>
   );

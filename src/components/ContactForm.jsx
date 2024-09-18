@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'; // Asegúrate de importar useEffect
 import Navbar from "./Navbar";
 import backgroundImage from "../assets/page-form.png";
-import emailjs from 'emailjs-com'; // Importar EmailJS
+import { init, send } from '@emailjs/browser';
+import { useAlert } from '../context/AlertContext'; 
 
 const ContactForm = () => {
+  const { setAlert } = useAlert()
   useEffect(() => {
-    emailjs.init('SYt0hbgqWPa-pzDHv'); // Reemplaza con tu User ID
+    init('SYt0hbgqWPa-pzDHv'); // Cambia emailjs por init
   }, []);
 
   const handleSubmit = (event) => {
@@ -16,13 +18,22 @@ const ContactForm = () => {
     const serviceID = 'default_service'; // Cambia esto si usas un servicio diferente
     const templateID = 'template_x3n9aeo'; // Cambia esto por tu Template ID
 
-    emailjs.sendForm(serviceID, templateID, event.target)
+    // Crear un objeto con los parámetros del template
+    const templateParams = {
+      from_name: event.target.from_name.value,
+      from_email: event.target.from_email.value,
+      message: event.target.message.value,
+    };
+
+    send(serviceID, templateID, templateParams)
       .then(() => {
         btn.value = 'Send Email';
-        alert('Sent!');
+        setAlert('Sent!');
+        // Limpiar el formulario solo si el envío es exitoso
+        event.target.reset(); // Limpia el formulario
       }, (err) => {
         btn.value = 'Send Email';
-        alert(JSON.stringify(err));
+        setAlert(JSON.stringify(err));
       });
   };
 

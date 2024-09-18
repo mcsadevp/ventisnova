@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Importamos useAuth
+import { useAlert } from '../context/AlertContext'; // Importamos useAlert
 
 function LoginForm() {
+  const { setAlert } = useAlert(); // Usa setAlert del contexto
   const [userIdentifier, setUserIdentifier] = useState(""); // Estado para el identificador del usuario (email o nombre de usuario)
   const [password, setPassword] = useState(""); // Estado para la contraseña
   const navigate = useNavigate(); // Hook para redirigir a otras rutas
@@ -19,7 +21,7 @@ function LoginForm() {
       navigate("/dashboard"); // Redirige al dashboard si el inicio de sesión es exitoso
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      alert("Error al iniciar sesión: " + error.message); // Muestra un mensaje de error
+      setAlert("Error al iniciar sesión: " + error.message); // Usa setAlert para mostrar el error
     }
   };
 
@@ -34,7 +36,7 @@ function LoginForm() {
       navigate("/dashboard"); // Redirige al dashboard si el inicio de sesión es exitoso
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
-      alert("Error al iniciar sesión con Google: " + error.message); // Muestra un mensaje de error
+      setAlert("Error al iniciar sesión con Google: " + error.message); // Usa setAlert para mostrar el error
     }
   };
 
@@ -46,16 +48,16 @@ function LoginForm() {
     e.preventDefault(); // Previene el comportamiento por defecto del botón
 
     if (!userIdentifier) {
-      alert("Por favor, ingresa tu correo electrónico registrado."); // Verifica que se haya ingresado un email
+      setAlert("Por favor, ingresa tu correo electrónico registrado."); // Usa setAlert para mostrar el mensaje
       return;
     }
 
     try {
       await handlePasswordReset(userIdentifier); // Intenta enviar el correo de restablecimiento
-      alert("Se ha enviado un correo electrónico para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) para seguir las instrucciones.");
+      setAlert("Se ha enviado un correo electrónico para restablecer tu contraseña. Revisa tu bandeja de entrada (o spam) para seguir las instrucciones.");
     } catch (error) {
       console.error("Error al enviar el correo electrónico de restablecimiento de contraseña:", error);
-      alert("Error al enviar el correo electrónico de restablecimiento. Revisa la consola para más detalles."); // Muestra un mensaje de error
+      setAlert("Error al enviar el correo electrónico de restablecimiento. Revisa la consola para más detalles."); // Usa setAlert para mostrar el error
     }
   };
 
@@ -85,7 +87,7 @@ function LoginForm() {
           onClick={handleForgotPassword}
           className="text-sm text-gray-300 mt-4 cursor-pointer"
         >
-          <span className="underline">Olvidé mi</span><span  className="text-green-300 underline"> contraseña</span>
+          <span className="underline">Olvidé mi</span><span className="text-green-300 underline"> contraseña</span>
         </button>
         <NavLink to="/register" className="text-sm text-gray-300 mt-2">
           ¿No tienes cuenta? Regístrate

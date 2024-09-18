@@ -3,28 +3,26 @@ import Navbar from "./Navbar";
 import { useAuth } from '../context/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import { NavLink } from 'react-router-dom';
+import { useAlert } from '../context/AlertContext'; 
 
 function UserDashboard() {
+  const { setAlert } = useAlert(); // Usa setAlert del contexto
   const { user, logout } = useAuth(); // Obtén el usuario del contexto
   const [newName, setNewName] = useState(user ? user.displayName : '');
   const [newEmail, setNewEmail] = useState(user ? user.email : '');
   const [newPassword, setNewPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
 
   const handleLogout = async () => {
     try {
       await logout(); // Llama a la función de logout
     } catch (error) {
-      setError("Error al cerrar sesión: " + error.message);
+      setAlert("Error al cerrar sesión: " + error.message); // Usa setAlert para el error
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
 
     try {
       // Actualiza solo el nombre si se ha cambiado
@@ -39,9 +37,9 @@ function UserDashboard() {
       if (newPassword) {
         await user.updatePassword(newPassword);
       }
-      setSuccess("Perfil actualizado exitosamente");
+      setAlert("Perfil actualizado exitosamente"); // Usa setAlert para el éxito
     } catch (error) {
-      setError("Error al actualizar el perfil: " + error.message);
+      setAlert("Error al actualizar el perfil: " + error.message); // Usa setAlert para el error
     }
   };
 
@@ -69,7 +67,6 @@ function UserDashboard() {
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
-              
                 />
               </div>
               <div>
@@ -79,7 +76,6 @@ function UserDashboard() {
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
-                
                 />
               </div>
               <div>
@@ -102,7 +98,6 @@ function UserDashboard() {
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Debe contener al menos un número, una letra minúscula, una letra mayúscula y al menos 8 o más caracteres"
-                
                 />
               </div>
               <div>
@@ -122,8 +117,6 @@ function UserDashboard() {
                   </button>
                 </NavLink>
               </div>
-              {error && <p className="text-red-500">{error}</p>}
-              {success && <p className="text-green-500">{success}</p>}
             </form>
           </div>
         </div>
