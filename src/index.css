@@ -23,10 +23,10 @@ input:-webkit-autofill::first-line {
   @apply bg-gradient-to-b from-[#174839] to-[#44A385];
 }
 
-.bg-custom-gradient-black {
+.bg-custom-gradient-dos {
   @apply bg-gradient-to-b from-[#1E473A] to-[#2C6653];
 }
 
-.bg-custom-gradient-blackk {
+.bg-custom-gradient-black {
   @apply bg-gradient-to-b from-[#122C24] to-[#1F332D];
 }

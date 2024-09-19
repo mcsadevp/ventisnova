@@ -51,7 +51,7 @@ const MentoriasYTutoriasView = () => {
               </div>
             </ul>
             <div className='mt-6 flex justify-center md:justify-start w-full'>
-                <button className='mt-4 md:mt-0 py-4 px-6 bg-white rounded-md hover:bg-customGreen hover:text-white transition-all font-semibold'>
+                <button onClick={ () => window.location.href='https://wa.me/5491166850200' } className='mt-4 md:mt-0 py-4 px-6 bg-white rounded-md hover:bg-customGreen hover:text-white transition-all font-semibold'>
                     ¡Inscribite ahora!
                 </button>
             </div>
@@ -120,10 +120,8 @@ const MentoriasYTutoriasView = () => {
                     <p className='text-sm mb-1'>Hasta 12 cuotas sin interés</p>
                     <p className='font-semibold mb-3'>$8.300</p>              
                     <div className="mt-auto">
-                      <Link to={"/"}>
-                        <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
+                      <Link to={"/mentorias"} className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
                           Ver curso
-                        </button>
                       </Link>
                     </div>
                   </div>
@@ -152,10 +150,8 @@ const MentoriasYTutoriasView = () => {
                     <p className='text-sm mb-1'>Hasta 12 cuotas sin interés</p>
                     <p className='font-semibold mb-3'>$8.300</p>              
                     <div className="mt-auto">
-                      <Link to={"/"}>
-                        <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
+                      <Link to={"/tutorias"} className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center" >
                           Ver curso
-                        </button>
                       </Link>
                     </div>
                   </div>

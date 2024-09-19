@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import image14 from '../assets/image 14.png'
 import { IoCalendarClearOutline } from "react-icons/io5";
@@ -30,8 +30,14 @@ const faqData = [
 ]
 
 const MentoriasView = () => {
+
+  useEffect(() => {
+  window.scrollTo(0, 0);  // Mueve el scroll a la parte superior
+  }, [])
+
   return (
     <div>
+      {/* Hero & navbar*/}
       <div className="bg-custom-gradient">
            <Navbar />
           <div className=' w-full py-20 px-24'>
@@ -41,7 +47,7 @@ const MentoriasView = () => {
                   <li>Teórico-práctico.</li>
                   <li>Duración: 11 semanas</li>
                   <div className='flex items-center'>
-                      <li>Sesiones online en vivo</li>
+                      <li>Online en vivo</li>
               
                       <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
                           <div className='w-2 h-2 bg-red-600 rounded-full'></div>
@@ -50,11 +56,12 @@ const MentoriasView = () => {
               </ul>
               <div className='mt-6 flex justify-center md:justify-start w-full'>
                   <button onClick={ () => window.location.href='https://wa.me/5491166850200?text=Hola%20me%20gustaría%20saber%20más%20información%20sobre%20las%20mentorías.' } className='mt-4 md:mt-0 py-4 px-6 bg-white rounded-md hover:bg-customGreen hover:text-white transition-all font-semibold'>
-                      ¡Inscribite ahora!
+                    Inscribirme ahora
                   </button>
               </div>
           </div>
         </div>
+        {/* Description & image section */}
         <div className="relative bg-customDarkGreen">
           {/* Contenedor principal con diseño de columna en móviles y fila en pantallas más grandes */}
           <div className="relative flex flex-col md:flex-row items-center md:items-start h-full">
@@ -68,7 +75,7 @@ const MentoriasView = () => {
             </div>
 
             {/* Contenedor de texto */}
-            <div className="relative md:w-[530px] z-10 bg-custom-gradient-black p-10 rounded-lg md:ml-auto md:static md:max-h-[380px] mt-12 md:mr-24 mb-10 mx-4">
+            <div className="relative md:w-[530px] z-10 bg-custom-gradient-dos p-10 rounded-lg md:ml-auto md:static md:max-h-[380px] mt-12 md:mr-24 mb-10 mx-4">
               <h2 className="text-3xl mb-4 text-white">Descripción</h2>
               <p className="mb-4 text-white">
               Esta mentoría está diseñada para emprendedores que buscan transformar sus ideas y pasiones en proyectos rentables. A través del asesoramiento de tu mentor y ejercicios prácticos y aplicables, recibirás <span className='text-customGreen'>orientación personalizada</span> para llevar tu visión al siguiente nivel. Desde la conceptualización hasta tu primer trabajo, <span className='text-customGreen'>te acompañaremos en cada paso del camino</span>, brindándote herramientas y estrategias para convertir tu idea en un <span className='text-customGreen'>negocio exitoso</span>. ¡Da el salto y comenzá a construir lo que siempre soñaste!
@@ -76,7 +83,8 @@ const MentoriasView = () => {
             </div>
           </div>
         </div>
-        <div className='container mx-auto w-[380px] md:w-[850px] md:h-[306px] bg-custom-gradient-blackk p-10 text-white flex flex-col mt-20 rounded'>
+        {/* Caracteristicas */}
+        <div className='container mx-auto w-[380px] md:w-[850px] md:h-[306px] bg-custom-gradient-black p-10 text-white flex flex-col mt-20 rounded'>
           <h1 className='text-3xl'>Características</h1>
           <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
                   <li>Orientación profesional: Consejos y ejercicios para poder potenciar el proyecto que te apasiona y volverlo viable. </li>
@@ -84,6 +92,7 @@ const MentoriasView = () => {
                   <li>Acompañamiento constante: Tu mentor te acompañará, no solo en tu aprendizaje, si no en la ejecución de cada uno de los pasos, hasta conseguir tus primeros clientes.</li>
               </ul>
         </div>
+        {/* Detalles del curso */}
         <div className='md:mx-0 mx-4'>
           <div className='container mx-auto md:w-[850px] h-auto border-2 border-customGreen mt-14 rounded text-white p-8'>
             <h1 className='text-3xl mb-2'>Detalles del curso</h1>
@@ -123,7 +132,8 @@ const MentoriasView = () => {
                 <div className='mb-3'>
                   <p className='text-customGreen font-bold'>Plan estándar</p>
                   <p>$99.600</p>
-                  <p className='text-sm text-gray-400'>Hasta 12 cuotas sin interés</p>
+                  <p className='text-sm text-gray-400'>Hasta 12 cuotas</p>
+                  <p className="text-sm text-gray-400 mb-1">sin interés</p>
                   <p className='text-xl'>$8.300</p>
                 </div>
 
@@ -140,7 +150,8 @@ const MentoriasView = () => {
             </button>
           </div>
         </div>
-        <div className='container mx-auto w-[380px] md:w-[850px]  bg-custom-gradient-black p-10 text-white flex flex-col mt-10 mb-5 rounded'>
+        {/* Beneficios */}
+        <div className='container mx-auto w-[380px] md:w-[850px]  bg-custom-gradient-dos p-10 text-white flex flex-col mt-10 mb-5 rounded'>
           <h1 className='text-3xl'>Beneficios</h1>
           <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
                   <li>Encuentros pensados exclusivamente para tu idea de negocio. </li>
@@ -148,6 +159,7 @@ const MentoriasView = () => {
                   <li>Herramientas adaptadas a las necesidades de tu proyecto.</li>
               </ul>
         </div>
+        {/* Preguntas frecuentes */}
         <div className='mt-12'>
           <FAQ data={ faqData }/>
         </div>

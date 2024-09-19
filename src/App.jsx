@@ -9,6 +9,7 @@ import UserDashboardView from './pages/UserDashboardView';
 import LoginFormView from './pages/LoginFormView';
 import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 import MentoriasView from './pages/MentoriasView';
+import TutoriasView from './pages/TutoriasView';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/perfil" element={<LoginFormView />} />
           <Route path="/mentorias-y-tutorias" element={ <MentoriasYTutoriasView /> }/>
           <Route path="/mentorias" element={ <MentoriasView /> }/>
+          <Route path="/tutorias" element={ <TutoriasView /> }/>
         </Routes>
     </Router>
     </AuthProvider>
