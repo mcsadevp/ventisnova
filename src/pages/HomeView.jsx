@@ -132,7 +132,7 @@ const HomeView = () => {
         </div>
 
         {/* Valores */}
-        <div className="flex flex-col justify-center items-center text-left px-4 max-w-sm mx-auto mt-16">
+        <div className="flex flex-col justify-center items-center text-left px-4 max-w-4xl mx-auto mt-16 width-full">
           <h1 className="text-2xl text-white font-bold mb-4">Valores</h1> {/* Larger heading and margin */}
           <div className="border-t border-gray-300 w-full mb-4"></div> {/* Full-width line with margin */}
           <p className="text-white text-md font-normal leading-relaxed mb-2">01. Empatía: Conectamos con tus experiencias, desafíos y sueños.</p>
