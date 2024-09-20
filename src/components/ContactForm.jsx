@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'; // Asegúrate de importar useEffect
+import { useLocation } from 'react-router-dom'; // Importa useLocation
 import Navbar from "./Navbar";
 import backgroundImage from "../assets/page-form.png";
 import { init, send } from '@emailjs/browser';
 import { useAlert } from '../context/AlertContext'; 
 
 const ContactForm = () => {
-  const { setAlert } = useAlert()
+  const { setAlert } = useAlert();
+  const location = useLocation(); // Obtiene la ubicación actual
+  const messageFromState = location.state?.mensaje || ''; // Asegúrate de que esto esté correcto
+
   useEffect(() => {
     init('SYt0hbgqWPa-pzDHv'); // Cambia emailjs por init
   }, []);
@@ -80,7 +84,8 @@ const ContactForm = () => {
                 rows="4"
                 className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400 resize-none"
                 required
-              ></textarea>
+                defaultValue={messageFromState} // Asegúrate de que esto esté correcto
+              />
             </div>
             <div>
               <button

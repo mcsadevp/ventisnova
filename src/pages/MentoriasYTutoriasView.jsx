@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 
 const faqData = [
   {
@@ -32,6 +33,12 @@ const faqData = [
 ]
 
 const MentoriasYTutoriasView = () => {
+  const navigate = useNavigate(); // Inicializa useNavigate
+
+  const handleNavigation = () => {
+    navigate('/contact', { state: { mensaje: "Quiero inscribirme en el curso Mentorias" } });
+  };
+
   return (
     <div className='flex flex-col w-full'>
         <Navbar className="bg-[linear-gradient(180deg,#1F332D_0%,rgba(30,87,70,0)_98.5%)] w-full z-10 text-white"/>
@@ -50,7 +57,10 @@ const MentoriasYTutoriasView = () => {
               </div>
             </ul>
             <div className='mt-6 flex justify-center md:justify-start w-full'>
-                <button className='mt-4 md:mt-0 py-4 px-6 bg-white rounded-md hover:bg-customGreen hover:text-white transition-all font-semibold'>
+                <button 
+                    onClick={handleNavigation} 
+                    className='mt-4 md:mt-0 py-4 px-6 bg-white rounded-md hover:bg-customGreen hover:text-white transition-all font-semibold'
+                >
                     ¡Inscribite ahora!
                 </button>
             </div>
