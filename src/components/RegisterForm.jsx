@@ -15,6 +15,16 @@ function RegisterForm() {
   const navigate = useNavigate(); // Usa useNavigate para redirigir
 
   /**
+   * Verifica si la contraseña es válida.
+   * @param {string} password - La contraseña a verificar.
+   * @returns {boolean} - Verdadero si la contraseña es válida, falso en caso contrario.
+   */
+  const isPasswordValid = (password) => {
+    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/; // Al menos 8 caracteres, una mayúscula, un número y un símbolo
+    return regex.test(password);
+  };
+
+  /**
    * Maneja el registro de un nuevo usuario.
    * @param {Event} e - Evento del formulario.
    */
@@ -22,6 +32,10 @@ function RegisterForm() {
     e.preventDefault(); // Previene el comportamiento por defecto del formulario
     if (password !== confirmPassword) {
       setAlert("Las contraseñas no coinciden"); // Verifica que las contraseñas coincidan
+      return;
+    }
+    if (!isPasswordValid(password)) { // Verifica si la contraseña es válida
+      setAlert("La contraseña debe tener al menos 8 caracteres, al menos una letra mayúscula,un número y un símbolo."); // Mensaje de error
       return;
     }
     try {

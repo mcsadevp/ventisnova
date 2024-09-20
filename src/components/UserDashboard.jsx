@@ -4,6 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import { NavLink } from 'react-router-dom';
 import { useAlert } from '../context/AlertContext'; 
+// Asegúrate de importar la función que necesitas para actualizar la contraseña
+// import { updatePassword } from 'firebase/auth'; // Descomenta si es necesario
 
 function UserDashboard() {
   const { setAlert } = useAlert(); // Usa setAlert del contexto
@@ -95,6 +97,8 @@ function UserDashboard() {
                 <input
                   type="password"
                   placeholder="Confirmar contraseña *"
+                  value={newPassword} // Agregado para mantener el valor
+                  onChange={(e) => setNewPassword(e.target.value)} // Agregado para manejar el cambio
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Debe contener al menos un número, una letra minúscula, una letra mayúscula y al menos 8 o más caracteres"
