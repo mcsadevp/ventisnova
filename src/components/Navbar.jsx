@@ -1,23 +1,47 @@
-import React, { useState } from 'react'
-import { IoSearchOutline, IoClose, IoMenu, IoPersonOutline } from "react-icons/io5"
+import React, { useState, useEffect } from 'react';
+import { IoClose, IoMenu, IoPersonOutline } from "react-icons/io5";
 import { NavLink } from 'react-router-dom';
-import  logo  from '../assets/Logo.png'
+import logo from '../assets/Logo.png';
 import { useAuth } from '../context/AuthContext'; // Importa el hook de autenticación
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
   const { user } = useAuth(); // Obtén el usuario del contexto
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // Si el usuario está desplazándose hacia abajo
+        setShowNavbar(false);
+      } else {
+        // Si el usuario está desplazándose hacia arriba
+        setShowNavbar(true);
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpieza del event listener cuando el componente se desmonta
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
-    <nav className="bg-[linear-gradient(180deg,#1F332D_0%,rgba(30,87,70,0)_98.5%)] w-full z-10 text-white">
+    <nav className={`bg-customDarkGreen fixed top-0 w-full z-10 text-white transition-transform duration-500 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
       <div className="md:mx-16 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo y enlaces */}
         <div className="flex items-center space-x-8">
           {/* Logo */}
-          <NavLink to={`/`}><img src={ logo } className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
+          <NavLink to={`/`}><img src={logo} className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
             <NavLink to={'/mentorias-y-tutorias'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
@@ -36,7 +60,7 @@ const Navbar = () => {
           </NavLink>
 
           {/* Botón del menú para móviles */}
-          <button onClick={ toggleMenu } className="md:hidden focus:outline-none">
+          <button onClick={toggleMenu} className="md:hidden focus:outline-none">
             {isOpen ? <IoClose className="h-6 w-6 text-white" /> : <IoMenu className="h-6 w-6 text-white" />}
           </button>
         </div>
@@ -52,9 +76,9 @@ const Navbar = () => {
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>
         </div>
-    </div>
-  </nav>
-  )
-}
+      </div>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;

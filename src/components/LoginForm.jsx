@@ -62,20 +62,20 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center bg-transparent text-white w-[304px] h-[430px] ml-[80px] mt-[50px]">
-      <h2 className="text-xl font-bold mb-6">Iniciar Sesión</h2>
+    <div  className="bg-white bg-opacity-10 p-10 mt-12 rounded-lg shadow-lg max-w-lg w-full md:p-10 md:px-32">
+      <h2 className="text-xl text-gray-50 font-bold mb-6">Iniciar Sesión</h2>
       <form className="w-full flex flex-col items-center" onSubmit={handleLogin}>
         <input
           type="text"
           placeholder="Usuario o E-mail"
-          className="w-full mb-4 p-2 bg-transparent text-white border-b border-white outline-none"
+          className="w-full mb-4 p-2 bg-transparent text-gray-50 border-b border-white outline-none font-semibold"
           value={userIdentifier}
           onChange={(e) => setUserIdentifier(e.target.value)} // Actualiza el estado del identificador del usuario
         />
         <input
           type="password"
           placeholder="Contraseña"
-          className="w-full mb-6 p-2 bg-transparent text-white border-b border-white outline-none"
+          className="w-full mb-6 p-2 bg-transparent text-white border-b border-white outline-none font-semibold"
           value={password}
           onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de la contraseña
         />
