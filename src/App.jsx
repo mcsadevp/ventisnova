@@ -11,6 +11,8 @@ import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 import ContactView from './pages/ContactView';
 import AlertProvider from './context/AlertContext';
 import AddArticleView from './pages/AddArticleView'; // Corregido el nombre de la importación
+import MentoriasView from './pages/MentoriasView';
+import TutoriasView from './pages/TutoriasView';
 
 
 function ProtectedRoute({ children }) {
@@ -34,6 +36,8 @@ function App() {
               <Route path="/perfil" element={<LoginFormView />} />
               <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
               <Route path="/contact" element={<ContactView/>}/>
+              <Route path="/mentorias" element={<MentoriasView/>}/>
+              <Route path="/tutorias" element={<TutoriasView/>}/>
             </Routes>
           </Router>
         </AlertProvider>

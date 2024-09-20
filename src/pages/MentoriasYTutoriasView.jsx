@@ -1,4 +1,3 @@
-import React from 'react';
 import image10 from '../assets/image 10.png';
 import campaingCreators from '../assets/campaign-creators-qCi_MzVODoU-unsplash 1.png';
 import image13 from '../assets/image 13.png';
@@ -8,6 +7,7 @@ import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react'
 
 const faqData = [
   {
@@ -33,10 +33,13 @@ const faqData = [
 ];
 
 const MentoriasYTutoriasView = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);  // Mueve el scroll a la parte superior
+  }, [])
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate('/contact', { state: { mensaje: "Quiero inscribirme en el curso Mentorias" } });
+    navigate('/contact', { state: { mensaje: "Quiero inscribirme en el curso Mentorías" } });
   };
 
   return (
@@ -118,11 +121,9 @@ const MentoriasYTutoriasView = () => {
                         <div className='w-2 h-2 bg-red-600 rounded-full'></div>
                       </div>
                     </div>
-                    <p className='text-sm font-semibold'>Plan estándar $99.600</p>
-                    <p className='text-sm mb-1'>Hasta 12 cuotas sin interés</p>
-                    <p className='font-semibold mb-3'>$8.300</p>
+                    <p className='text-sm font-semibold'>Plan estándar USD 300</p>
                     <div className="mt-auto">
-                      <Link to={"/"}>
+                      <Link to={"/mentorias"}>
                         <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
                           Ver curso
                         </button>
@@ -150,11 +151,9 @@ const MentoriasYTutoriasView = () => {
                         <div className='w-2 h-2 bg-red-600 rounded-full'></div>
                       </div>
                     </div>
-                    <p className='text-sm font-semibold'>Plan estándar $99.600</p>
-                    <p className='text-sm mb-1'>Hasta 12 cuotas sin interés</p>
-                    <p className='font-semibold mb-3'>$8.300</p>
+                    <p className='text-sm font-semibold'>Plan estándar USD 200</p>
                     <div className="mt-auto">
-                      <Link to={"/"}>
+                      <Link to={"/tutorias"}>
                         <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
                           Ver curso
                         </button>

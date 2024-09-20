@@ -79,7 +79,7 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de la contraseña
         />
-        <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
+        <button type="submit" className="w-full p-2 bg-customLightGreen rounded cursor-pointer mb-4">
           Iniciar Sesión
         </button>
         <button

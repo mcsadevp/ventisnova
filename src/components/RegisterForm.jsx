@@ -108,7 +108,7 @@ function RegisterForm() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza el estado de la confirmación de la contraseña
         />
-        <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
+        <button type="submit" className="w-full p-2 bg-customLightGreen rounded cursor-pointer mb-4">
           Registrarse
         </button>
         <NavLink to="/perfil" className="text-sm text-gray-300 mt-4"><span className="underline">Olvidé mi</span><span  className="text-green-300 underline"> contraseña</span></NavLink>
