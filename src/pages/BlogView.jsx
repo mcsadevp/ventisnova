@@ -19,7 +19,7 @@ const BlogView = () => {
       </div>
 
       {/* search tags on the top right */}
-<div className="flex space-x-4 ">
+<div className="flex space-x-4 mb-4">
   <span className='bg-customGreen text-white px-4 py-1 rounded-full text-sm'>Diseño</span>
   <span className='bg-customGreen text-white px-4 py-1 rounded-full text-sm'>Programación</span>
   <span className='bg-customGreen text-white px-4 py-1 rounded-full text-sm'>IA</span>
@@ -46,7 +46,7 @@ const BlogView = () => {
 
         {/* Container 2 */}
         <div className=" flex flex-col md:flex-row-reverse items-center justify-between bg-customDarkGreen  border rounded-lg  md:items-start ">
-          <img src={image19} alt="" className="w-full md:w-1/2 mb-4 md:mb-0 " />
+          <img src={image19} alt="" className="w-full  md:w-1/2 mb-4 md:mb-0 " />
           <div className="ml-8 md:ml-0 pl-2 pt-2 ">
             <h2 className="text-1xl text-white pt-2 mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
 

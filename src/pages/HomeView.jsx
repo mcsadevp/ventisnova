@@ -25,10 +25,10 @@ const HomeView = () => {
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center hidden md:block">
-            <div className="relative p-4  rounded-full">
-              {/* <div className="absolute  w-20 h-20 bg-customDarkGreen  border-customGreen rounded-full "> </div> */}
-              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full" />
+          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center hidden md:block relative h-[400px]">
+            {/* Adjust this height */}
+            <div className="absolute -inset-5 bottom-0 p-4 rounded-full">
+              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[80%]" />
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ const HomeView = () => {
           {/* Right Image Section */}
           <div className=" relative h-full w-full flex items-center justify-center">
             <button className="md:hidden absolute  bg-customGreen text-white px-16 py-2 rounded-md z-10">Ver cursos</button>
-            <img src={image6} alt="image6" className="object-cover h-full w-full rounded-lg" />
+            <img src={image6} alt="image6" className="object-cover  h-full w-full rounded-lg" />
           </div>
         </div>
       </div>
