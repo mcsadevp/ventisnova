@@ -1,4 +1,5 @@
 import image6 from '../assets/image 6.png';
+import image5 from '../assets/image 5.png';
 import image11 from '../assets/image 11.png';
 import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
@@ -8,13 +9,13 @@ import Footer from '../components/Footer';
 const HomeView = () => {
   return (
     <div>
- 
+
       <div className="h-1/2  bg-custom-gradient ">
-      <Navbar/>
+        <Navbar />
         <nav className="flex justify-between items-center p-6">{/* Navigation can go here if needed */}</nav>
-        <div className="flex flex-col items-center justify-center px-6 py-12">
+        <div className="flex flex-col md:flex-row items-center justify-center px-6 py-12">
           {/* Text Section */}
-          <div className="w-full text-center">
+          <div className="w-full text-center md:w-1/2">
             <h2 className="text-3xl font-semibold text-white leading-tight">
               ¡No dejes que la falta <br /> de experiencia te detenga!
             </h2>
@@ -27,7 +28,15 @@ const HomeView = () => {
               <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8">Potenciate ahora</button>
             </NavLink>
           </div>
+
+          {/* Image Section */}
+          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center self-end">
+            <div className="relative p-4 rounded-full">
+              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full hidden mb-0 md:block " />
+            </div>
+          </div>
         </div>
+
       </div>
       {/* register container */}
 
@@ -81,9 +90,9 @@ const HomeView = () => {
             <p className="text-white font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
             <p className="text-white font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
             <div className="hidden md:flex justify-center mt-4">
-            <NavLink to="/mentorias-y-tutorias">
-              <button className="bg-customGreen text-white px-16 py-2 mt-4 rounded-md">Inscribirme</button>
-            </NavLink>
+              <NavLink to="/mentorias-y-tutorias">
+                <button className="bg-customGreen text-white px-16 py-2 mt-4 rounded-md">Inscribirme</button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -143,7 +152,7 @@ const HomeView = () => {
           <p className="text-white text-md font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

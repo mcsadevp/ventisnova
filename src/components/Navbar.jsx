@@ -20,7 +20,7 @@ const Navbar = () => {
           <NavLink to={`/`}><img src={ logo } className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
-            <NavLink to={'/CursosView'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
+            <NavLink to={'/mentorias-y-tutorias'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
             <NavLink to={`/BlogView`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
             <p className='px-2 py-2 text-white'>|</p>
@@ -31,9 +31,6 @@ const Navbar = () => {
         {/* Iconos y botón de menú para móviles */}
         <div className="flex items-center space-x-8">
           {/* Iconos */}
-          <NavLink to={`/buscar`}>
-            <IoSearchOutline className="h-6 w-6 text-white" />
-          </NavLink>
           <NavLink to={user ? '/dashboard' : '/perfil'} className='md:block hidden'> {/* Ruta dinámica */}
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>
