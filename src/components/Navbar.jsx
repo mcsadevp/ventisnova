@@ -44,11 +44,17 @@ const Navbar = () => {
           <NavLink to={`/`}><img src={logo} className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
-            <NavLink to={'/mentorias-y-tutorias'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
+            <NavLink to={`/mentorias-y-tutorias`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customLightGreen" : "px-2 text-white rounded-md transition-all"}>
+              Cursos
+            </NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/BlogView`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
+            <NavLink to={`/BlogView`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customGreen" : "px-2 text-white rounded-md transition-all"}>
+              Blog
+            </NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/Contact`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
+            <NavLink to={`/Contact`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customGreen" : "px-2 text-white rounded-md transition-all"}>
+              Contacto
+            </NavLink>
           </div>
         </div>
 
@@ -69,10 +75,16 @@ const Navbar = () => {
       {/* Menú desplegable para móviles */}
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-60 opacity-100' : ' max-h-0 opacity-0'} md:hidden bg-black/25`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <NavLink to={`/cursosView`} className="block px-3 py-2 text-white rounded-md text-base">Cursos</NavLink>
-          <NavLink to={`/blogView`} className="block px-3 py-2 text-white rounded-md text-base">Blog</NavLink>
-          <NavLink to={`/contactoView`} className="block px-3 py-2 text-white rounded-md text-base">Contacto</NavLink>
-          <NavLink to={`/perfil`} className='flex px-5'>
+          <NavLink to={'/mentorias-y-tutorias'} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white"}>
+            Cursos
+          </NavLink>
+          <NavLink to={`/blogView`} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white"}>
+            Blog
+          </NavLink>
+          <NavLink to={`/contact`} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white"}>
+            Contacto
+          </NavLink>
+          <NavLink to={user ? '/dashboard' : '/perfil'} className='flex px-5'>
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>
         </div>

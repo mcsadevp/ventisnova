@@ -2,9 +2,11 @@ import { IoCalendarClearOutline } from "react-icons/io5"
 import Navbar from "../components/Navbar"
 import { FaRegClock, FaWhatsapp } from "react-icons/fa"
 import image15 from "../assets/image 15.png"
+import semiCirculos from '../assets/semi-circulo.jpeg';
 import FAQ from "../components/FAQ"
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react'
+import Footer from "../components/Footer";
 
 const faqData = [
   {
@@ -44,7 +46,7 @@ const TutoriasView = () => {
   return (
     <div>
       {/* Hero & nabvar*/}
-      <div className="bg-custom-gradient">
+      <div className='bg-cover' style={{ backgroundImage: `url(${ semiCirculos })` }}>
         <Navbar />
         <div className=' w-full py-20 px-24'>
           <h1 className='text-white md:text-5xl text-3xl font-bold '>TUTORÍAS</h1>
@@ -155,18 +157,21 @@ const TutoriasView = () => {
         </div>
       </div>
       {/* Beneficios */}
-      <div className='container mx-auto w-[380px] md:w-[850px]  bg-custom-gradient-dos p-10 text-white flex flex-col mt-10 mb-5 rounded'>
-        <h1 className='text-3xl'>Beneficios</h1>
-        <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
-          <li>Aprendizaje enfocado y eficiente.</li>
-          <li>Atención personalizada para resolver dudas y profundizar em temas específicos.</li>
-          <li>Flexibilidad para aprender a tu propio ritmo y según tu disponibilidad.</li>
-        </ul>
+      <div className="mx-4 md:mx-0">
+        <div className='container mx-auto md:w-[850px]  bg-custom-gradient-dos p-10 text-white flex flex-col mt-10 mb-5 rounded'>
+          <h1 className='text-3xl'>Beneficios</h1>
+          <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
+            <li>Aprendizaje enfocado y eficiente.</li>
+            <li>Atención personalizada para resolver dudas y profundizar em temas específicos.</li>
+            <li>Flexibilidad para aprender a tu propio ritmo y según tu disponibilidad.</li>
+          </ul>
+        </div>
       </div>
       {/* Preguntas frecuentes */}
-      <div className='mt-12'>
+      <div className='mt-12 mx-4 md:mx-0 mb-4'>
         <FAQ data={faqData} />
       </div>
+      <Footer />
     </div>
   )
 }

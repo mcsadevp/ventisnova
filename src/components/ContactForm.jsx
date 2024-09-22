@@ -41,8 +41,8 @@ const ContactForm = () => {
 
   return (
     <div className="w-full h-screen overflow-hidden relative">
+      <Navbar />
       <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385]">
-        <Navbar />
           <div className="flex flex-col justify-left md:pl-24"><h2 className="text-2xl font-semibold text-white leading-tight md:text-left text-center">
           Contacto
         </h2>
