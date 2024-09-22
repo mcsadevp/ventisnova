@@ -4,22 +4,20 @@ import { useAuth } from '../context/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import { NavLink } from 'react-router-dom';
 import { useAlert } from '../context/AlertContext'; 
-// Asegúrate de importar la función que necesitas para actualizar la contraseña
-// import { updatePassword } from 'firebase/auth'; // Descomenta si es necesario
 
-function UserDashboard() {
-  const { setAlert } = useAlert(); // Usa setAlert del contexto
-  const { user, logout } = useAuth(); // Obtén el usuario del contexto
-  const [newName, setNewName] = useState(user ? user.displayName : '');
+const UserDashboard = () => {
+  const { setAlert } = useAlert();
+  const { user, logout } = useAuth();
+  const [newName, setNewName] = useState(user ? user.displayName || user.email : ''); // Usa email si displayName es undefined
   const [newEmail, setNewEmail] = useState(user ? user.email : '');
   const [newPassword, setNewPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogout = async () => {
     try {
-      await logout(); // Llama a la función de logout
+      await logout();
     } catch (error) {
-      setAlert("Error al cerrar sesión: " + error.message); // Usa setAlert para el error
+      setAlert("Error al cerrar sesión: " + error.message);
     }
   };
 
@@ -27,21 +25,18 @@ function UserDashboard() {
     e.preventDefault();
 
     try {
-      // Actualiza solo el nombre si se ha cambiado
       if (newName !== user.displayName) {
         await updateProfile(user, { displayName: newName });
       }
-      // Actualiza el email solo si se ha cambiado
       if (newEmail !== user.email) {
         await user.updateEmail(newEmail);
       }
-      // Actualiza la contraseña solo si se ha proporcionado
       if (newPassword) {
         await user.updatePassword(newPassword);
       }
-      setAlert("Perfil actualizado exitosamente"); // Usa setAlert para el éxito
+      setAlert("Perfil actualizado exitosamente");
     } catch (error) {
-      setAlert("Error al actualizar el perfil: " + error.message); // Usa setAlert para el error
+      setAlert("Error al actualizar el perfil: " + error.message);
     }
   };
 
@@ -50,11 +45,9 @@ function UserDashboard() {
       <div className="w-full h-full relative">
         <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385]">
           <Navbar />
-          {user && user.displayName && (
-            <h2 className="text-3xl font-semibold text-white leading-tight text-left ml-[85px]">
-              Bienvenido: {user.displayName}
-            </h2>
-          )}
+          <h2 className="text-3xl font-semibold text-white leading-tight text-left ml-[85px]">
+            Bienvenido: {newName || newEmail} 
+          </h2>
           <p className="text-white text-lg mt-2 text-left ml-[85px]">
             Modificá tus datos personales y de contacto.
           </p>
@@ -82,7 +75,7 @@ function UserDashboard() {
               </div>
               <div>
                 <input
-                  type={showPassword ? "text" : "password"} // Cambia el tipo según el estado
+                  type={showPassword ? "text" : "password"}
                   placeholder="Nueva contraseña *"
                   onChange={(e) => setNewPassword(e.target.value)}
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
@@ -97,8 +90,8 @@ function UserDashboard() {
                 <input
                   type="password"
                   placeholder="Confirmar contraseña *"
-                  value={newPassword} // Agregado para mantener el valor
-                  onChange={(e) => setNewPassword(e.target.value)} // Agregado para manejar el cambio
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                   className="w-full bg-transparent border-b border-teal-600 text-white placeholder-teal-500 py-2 focus:outline-none focus:border-teal-400"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Debe contener al menos un número, una letra minúscula, una letra mayúscula y al menos 8 o más caracteres"
