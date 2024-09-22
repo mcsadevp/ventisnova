@@ -12,11 +12,11 @@ const HomeView = () => {
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-32 py-12">
           {/* Text Section */}
           <div className="md:w-1/2">
-            <h2 className="text-4xl font-semibold text-white leading-tight">
+            <h2 className="text-3xl font-semibold text-white leading-tight md:text-5xl">
               ¡No dejes que la falta <br /> de experiencia te detenga!
             </h2>
-            <p className="text-white text-lg mt-6">La tecnologia es una herramienta poderosa.</p>
-            <p className="text-white font-thin hidden md:block">
+            <p className="text-white text-3xl mt-6">La tecnologia es una herramienta poderosa.</p>
+            <p className="text-white text-xl font-thin hidden md:block">
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </p>
@@ -27,8 +27,8 @@ const HomeView = () => {
           {/* Image Section */}
           <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center hidden md:block relative h-[400px]">
             {/* Adjust this height */}
-            <div className="absolute -inset-5 bottom-0 p-4 rounded-full">
-              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[80%]" />
+            <div className="absolute -inset-5 bottom-0 p-4 rounded-full ">
+              <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%] " />
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@ const HomeView = () => {
         <div className=" w-full max-w-6xl grid md:grid-cols-2 gap-8 mb-0 border border-white  rounded-lg p-6">
           {/* Left Text Section */}
           <div className=" flex flex-col justify-center rounded-lg">
-            <h2 className="text-1xl text-white mb-4 ">Habilidades Digitales</h2>
-            <p className="text-white font-thin mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
-            <p className="text-white font-thin">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
+            <h2 className="text-3xl text-white mb-4 ">Habilidades Digitales</h2>
+            <p className="text-white text-xl font-thin mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
+            <p className="text-white text-xl font-thin">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
             <div className="hidden md:flex justify-center mt-4">
               <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
             </div>
@@ -78,9 +78,9 @@ const HomeView = () => {
 
           {/* Right Text Section (appears at the top on mobile) */}
           <div className="rounded-lg">
-            <h2 className="text-1xl text-white mb-4">Habilidades Digitales</h2>
-            <p className="text-white font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
-            <p className="text-white font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
+            <h2 className="text-3xl text-white mb-4">Habilidades Digitales</h2>
+            <p className="text-white text-xl font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
+            <p className="text-white text-xl font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
             <div className="hidden md:flex justify-center mt-4">
               <button className="bg-customGreen text-white px-16 py-2 mt-4 rounded-md">Inscribirme</button>
             </div>
@@ -101,8 +101,8 @@ const HomeView = () => {
         <div className="flex flex-col md:grid md:grid-cols-3 items-center gap-8">
           {/* Mision */}
           <div className="order-1 md:order-none">
-            <h2 className="text-2xl font-bold text-white text-center pt-8 md:pt-16">Misión</h2>
-            <p className="text-white font-thin text-center">
+            <h2 className="text-3xl font-bold text-white text-center pt-8 md:pt-16">Misión</h2>
+            <p className="text-white text-xl font-thin text-center">
               En Ventisnova queremos <br />
               potenciar cada talento, <br />
               sin importar su rubro, <br />
@@ -120,8 +120,8 @@ const HomeView = () => {
 
           {/* Vision */}
           <div className="order-2 md:order-none">
-            <h2 className="text-2xl font-bold text-white text-center pt:8 md:pt-16">Visión</h2>
-            <p className="text-white font-thin text-center">
+            <h2 className="text-3xl font-bold text-white text-center pt:8 md:pt-16">Visión</h2>
+            <p className="text-white text-xl font-thin text-center">
               Aspiramos a una realidad en <br />
               la que emprender sea <br />
               sencillo y rentable, para que <br />
@@ -135,11 +135,11 @@ const HomeView = () => {
         <div className="flex flex-col justify-center items-center text-left px-4 max-w-4xl mx-auto mt-16 width-full">
           <h1 className="text-2xl text-white font-bold mb-4">Valores</h1> {/* Larger heading and margin */}
           <div className="border-t border-gray-300 w-full mb-4"></div> {/* Full-width line with margin */}
-          <p className="text-white text-md font-normal leading-relaxed mb-2">01. Empatía: Conectamos con tus experiencias, desafíos y sueños.</p>
-          <p className="text-white text-md font-normal leading-relaxed mb-2">02. Innovación: Fomentamos el camino hacia nuevas y revolucionarias ideas.</p>
-          <p className="text-white text-md font-normal leading-relaxed mb-2">03. Crecimiento Personal y Profesional: Nos enfocamos en tu crecimiento y potencialidad.</p>
-          <p className="text-white text-md font-normal leading-relaxed mb-2">04. Pasión: Nos apasiona trabajar para generar una diferencia positiva en tus objetivos.</p>
-          <p className="text-white text-md font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
+          <p className="text-white text-l font-normal leading-relaxed mb-2">01. Empatía: Conectamos con tus experiencias, desafíos y sueños.</p>
+          <p className="text-white text-l font-normal leading-relaxed mb-2">02. Innovación: Fomentamos el camino hacia nuevas y revolucionarias ideas.</p>
+          <p className="text-white text-l font-normal leading-relaxed mb-2">03. Crecimiento Personal y Profesional: Nos enfocamos en tu crecimiento y potencialidad.</p>
+          <p className="text-white text-l font-normal leading-relaxed mb-2">04. Pasión: Nos apasiona trabajar para generar una diferencia positiva en tus objetivos.</p>
+          <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
     </div>
