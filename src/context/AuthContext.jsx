@@ -10,7 +10,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore"; // Importa Firestore
+import { doc, setDoc, getDoc } from "firebase/firestore"; // Importa Firestore
 
 export const authContext = createContext();
 
@@ -36,13 +36,12 @@ export function AuthProvider({ children }) {
     try {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "usuarios", response.user.uid), {
-        username: username || email, // Reemplaza `username` por `email` si está vacío
+        username: username || email,
         email,
-        isAdmin: false // Asigna isAdmin como false por defecto
+        isAdmin: false
       });
       return response;
     } catch (error) {
-      // Manejar el error de correo electrónico ya en uso
       if (error.code === 'auth/email-already-in-use') {
         console.error("Error durante el registro: El correo electrónico ya está en uso.");
         throw new Error("El correo electrónico ya está en uso. Intenta con otro.");
@@ -52,7 +51,6 @@ export function AuthProvider({ children }) {
       }
     }
   };
-  
 
   const login = async (email, password) => {
     try {
@@ -68,11 +66,23 @@ export function AuthProvider({ children }) {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      await setDoc(doc(db, "usuarios", result.user.uid), {
-        email: result.user.email,
-        username: result.user.displayName,
-        isAdmin: false // Asigna isAdmin como false por defecto
-      }, { merge: true });
+
+      const userDocRef = doc(db, "usuarios", result.user.uid);
+      const userSnapshot = await getDoc(userDocRef);
+
+      if (userSnapshot.exists()) {
+        await setDoc(userDocRef, {
+          email: result.user.email,
+          username: result.user.displayName,
+        }, { merge: true });
+      } else {
+        await setDoc(userDocRef, {
+          email: result.user.email,
+          username: result.user.displayName,
+          isAdmin: false,
+        });
+      }
+
       return result;
     } catch (error) {
       console.error("Error durante el inicio de sesión con Google:", error);
