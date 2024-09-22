@@ -20,11 +20,17 @@ const Navbar = () => {
           
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
-            <NavLink to={'/CursosView'} className="px-2 text-white rounded-md transition-all">Cursos</NavLink>
+            <NavLink to={`/mentorias-y-tutorias`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customGreen" : "px-2 text-white rounded-md transition-all"}>
+              Cursos
+            </NavLink>
+              <p className='px-2 py-2 text-white'>|</p>
+            <NavLink to={`/BlogView`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customGreen" : "px-2 text-white rounded-md transition-all"}>
+              Blog
+            </NavLink>
             <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/BlogView`} className="px-2 text-white rounded-md transition-all">Blog</NavLink>
-            <p className='px-2 py-2 text-white'>|</p>
-            <NavLink to={`/ContactoView`} className="px-2 text-white rounded-md transition-all">Contacto</NavLink>
+            <NavLink to={`/ContactoView`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customGreen" : "px-2 text-white rounded-md transition-all"}>
+              Contacto
+            </NavLink>
           </div>
         </div>
 
@@ -48,7 +54,9 @@ const Navbar = () => {
       {/* Menú desplegable para móviles */}
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-60 opacity-100' : ' max-h-0 opacity-0'} md:hidden bg-black/25`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <NavLink to={`/cursosView`} className="block px-3 py-2 text-white rounded-md text-base">Cursos</NavLink>
+        <NavLink to={"/mentorias-y-tutorias"} className={({ isActive }) => isActive ? "px-2 text-white rounded-md transition-all font-bold bg-customGreen" : "px-2 text-white rounded-md transition-all"}>
+          Cursos
+        </NavLink>
           <NavLink to={`/blogView`} className="block px-3 py-2 text-white rounded-md text-base">Blog</NavLink>
           <NavLink to={`/contactoView`} className="block px-3 py-2 text-white rounded-md text-base">Contacto</NavLink>
           <NavLink to={`/perfil`} className='flex px-5'>

@@ -3,6 +3,7 @@ import image10 from '../assets/image 10.png';
 import campaingCreators from '../assets/campaign-creators-qCi_MzVODoU-unsplash 1.png'
 import image13 from '../assets/image 13.png';
 import ondasFondo from '../assets/onda2.png'
+import semiCirculos from '../assets/semi-circulo.jpeg'
 import { Link } from 'react-router-dom';
 import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
@@ -34,7 +35,7 @@ const faqData = [
 const MentoriasYTutoriasView = () => {
   return (
     <div className='flex flex-col w-full'>
-      <div className='bg-custom-gradient'>
+      <div className='bg-cover' style={{ backgroundImage: `url(${ semiCirculos })` }}>
         <Navbar />
         <div className='w-full py-24 px-24 md:max-h-[600px]'>
             <h1 className='text-white md:text-5xl text-3xl font-bold md:max-w-[400px] '>MENTORÍAS Y TUTORÍAS</h1>
@@ -90,7 +91,7 @@ const MentoriasYTutoriasView = () => {
           <div className="container mx-auto">
             {/* Texto encima de las cards */}
             <div className=" mb-6">
-              <h2 className="text-2xl font-bold text-white ml-2 md:ml-0">¡Elegí tu curso ideal!</h2>
+              <h2 className="text-2xl font-bold text-white ml-3 md:ml-0">¡Elegí tu curso ideal!</h2>
             </div>
 
             {/* Grid de cards y texto */}
@@ -159,7 +160,7 @@ const MentoriasYTutoriasView = () => {
               </div>
 
               {/* Texto a la derecha de las cards */}
-              <div className=" text-white p-4 rounded-lg md:w-[450px] hidden md:block ">
+              <div className=" text-white p-4 md:p-14 rounded-lg md:w-[480px] md:mt-16">
                 <h2 className="text-2xl font-semibold mb-4">¿Necesitás ayuda para llevar a tierra tus ideas de negocio?</h2>
                 <p className='text-lg'>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
               </div>
