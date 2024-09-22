@@ -5,6 +5,7 @@ import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
 const HomeView = () => {
   return (
@@ -150,6 +151,7 @@ const HomeView = () => {
         </div>
       </div>
       <Footer />
+      <FloatButtonWhatsapp />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 import FAQ from '../components/FAQ';
 import { useNavigate } from 'react-router-dom';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
 const faqData = [
   {
@@ -171,6 +172,7 @@ const MentoriasView = () => {
         <FAQ data={faqData} />
       </div>
       <Footer />
+      <FloatButtonWhatsapp />
     </div>
   )
 }

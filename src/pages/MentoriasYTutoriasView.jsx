@@ -10,6 +10,7 @@ import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import Footer from '../components/Footer';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
 const faqData = [
   {
@@ -189,6 +190,7 @@ const MentoriasYTutoriasView = () => {
         <FAQ data={faqData} />
       </div>
       <Footer />
+      <FloatButtonWhatsapp />
     </div>
   );
 };

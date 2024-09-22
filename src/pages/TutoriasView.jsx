@@ -7,6 +7,7 @@ import FAQ from "../components/FAQ"
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react'
 import Footer from "../components/Footer";
+import FloatButtonWhatsapp from "../components/FloatButtonWhatsapp";
 
 const faqData = [
   {
@@ -172,6 +173,7 @@ const TutoriasView = () => {
         <FAQ data={faqData} />
       </div>
       <Footer />
+      <FloatButtonWhatsapp />
     </div>
   )
 }
