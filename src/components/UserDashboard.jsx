@@ -47,9 +47,9 @@ function UserDashboard() {
 
   return (
     <div className="dashboard">
-      <div className="w-full h-full relative">
-        <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385]">
+      <div className="w-full h-full relative md:mt-16 mt-[70px]">
           <Navbar />
+        <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385] md:pt-10 pt-3">
           {user && user.displayName && (
             <h2 className="text-3xl font-semibold text-white leading-tight text-left ml-[85px]">
               Bienvenido: {user.displayName}
@@ -104,17 +104,17 @@ function UserDashboard() {
                   title="Debe contener al menos un número, una letra minúscula, una letra mayúscula y al menos 8 o más caracteres"
                 />
               </div>
-              <div>
+              <div className="flex flex-col items-center justify-center">
                 <button
                   type="submit"
-                  className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full mb-3"
+                  className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full mb-3 mt-5 md:w-[250px]"
                 >
                   Guardar cambios
                 </button>
                 <NavLink to='/'>
                   <button
                     type="button"
-                    className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full"
+                    className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-[295px] md:w-[250px]"
                     onClick={handleLogout}
                   >
                     Logout
