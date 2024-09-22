@@ -59,9 +59,9 @@ function UserDashboard() {
             Modificá tus datos personales y de contacto.
           </p>
         </div>
-        <div>
-          <div className="bg-customFormGreen text-white px-8 py-6 rounded-lg shadow-lg absolute left-1/2 transform -translate-x-1/2 top-[210%] -translate-y-1/2 w-11/12 max-w-4xl">
-            <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className='flex flex-col justify-center items-center'>
+          <div className="bg-customFormGreen text-white px-8 py-6 rounded-lg shadow-lg w-11/12 max-w-4xl md:mt-32 my-10 ">
+            <form onSubmit={handleSubmit}>
               <div>
                 <input
                   type="text"
@@ -107,7 +107,7 @@ function UserDashboard() {
               <div>
                 <button
                   type="submit"
-                  className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full"
+                  className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full mb-3"
                 >
                   Guardar cambios
                 </button>

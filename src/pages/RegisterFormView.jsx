@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 import RegisterForm from "../components/RegisterForm";
 import Navbar from "../components/Navbar";
-import backgroundImage from '../assets/page-register.png';
+import backgroundImage from '../assets/registerImage.jpg';
 
 function RegisterFormView() {
   const auth = useAuth();
@@ -15,7 +15,10 @@ function RegisterFormView() {
       }}
     >
       <Navbar/>
+      <div className="flex flex-1 items-center justify-center">
+
       <RegisterForm auth={auth} />
+      </div>
     </div>
   );
   }
