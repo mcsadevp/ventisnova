@@ -37,9 +37,6 @@ const Navbar = () => {
         {/* Iconos y botón de menú para móviles */}
         <div className="flex items-center space-x-8">
           {/* Iconos */}
-          <NavLink to={`/buscar`}>
-            <IoSearchOutline className="h-6 w-6 text-white" />
-          </NavLink>
           <NavLink to={`/perfil`} className='md:block hidden'>
             <IoPersonOutline className="h-6 w-6 text-white" />
           </NavLink>

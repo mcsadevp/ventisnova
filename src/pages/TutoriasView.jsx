@@ -5,6 +5,7 @@ import image15 from "../assets/image 15.png"
 import semiCirculos from '../assets/semi-circulo.jpeg'
 import { useEffect } from "react"
 import FAQ from "../components/FAQ"
+import FloatButtonWhatsapp from "../components/FloatButtonWhatsapp"
 
 const faqData = [
   {
@@ -166,6 +167,7 @@ const TutoriasView = () => {
             <div className='mt-12'>
               <FAQ data={ faqData }/>
            </div>
+           <FloatButtonWhatsapp />
      </div>
   )
 }
