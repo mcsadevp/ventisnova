@@ -1,15 +1,17 @@
 import { useAuth } from "../context/AuthContext";
 import UserDashboard from "../components/UserDashboard";
 import Footer from "../components/Footer"
+import Navbar from "../components/Navbar";
 import FloatingButton from "../components/FloatingButton";
 
 function UserDashboardView() {
   const auth = useAuth();
-  
+
   return (
     <div className="min-h-screen flex flex-col justify-between">
+      <Navbar/>
       <UserDashboard auth={auth} />
-       {isAdmin && <FloatingButton path="/admin/configuracion" />}
+      <FloatingButton/>
       <Footer/>
     </div>
   );

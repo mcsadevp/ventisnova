@@ -10,7 +10,7 @@ import LoginFormView from './pages/LoginFormView';
 import MentoriasYTutoriasView from './pages/MentoriasYTutoriasView';
 import ContactView from './pages/ContactView';
 import AlertProvider from './context/AlertContext';
-import AddArticleView from './pages/AddArticleView';
+import AdminArticleView from './pages/AdminArticleView';
 import MentoriasView from './pages/MentoriasView';
 import TutoriasView from './pages/TutoriasView';
 import NoticiaView from './pages/NoticiaView'; // Asegúrate de importar NoticiaView
@@ -33,7 +33,7 @@ function App() {
               <Route path='/noticiaView/:slug' element={<NoticiaView />} /> {/* Usar :slug */}
               <Route path="/register" element={<RegisterFormView />} />
               <Route path="/dashboard" element={<ProtectedRoute><UserDashboardView /></ProtectedRoute>} />
-              <Route path="/addarticle" element={<ProtectedRoute><AddArticleView /></ProtectedRoute>} />
+              <Route path="/admin-article" element={<ProtectedRoute><AdminArticleView /></ProtectedRoute>} />
               <Route path="/perfil" element={<LoginFormView />} />
               <Route path="/mentorias-y-tutorias" element={<MentoriasYTutoriasView />} />
               <Route path="/contact" element={<ContactView />} />
