@@ -1,8 +1,8 @@
-import React from 'react'
+import BlogList from "../components/BlogList"
 
 const BlogView = () => {
   return (
-    <div>BlogView</div>
+    <div><BlogList/></div>
   )
 }
 
