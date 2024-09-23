@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import image19 from '../assets/image 19.png';
 
 import { useState } from 'react';
@@ -5,11 +6,16 @@ import { useState } from 'react';
 const BlogView = () => {
   //track current page
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate(); // initiliaze the useNavigate hook
 
   //Function to handle page click
   const handlePageClick = (page) => {
     setCurrentPage(page);
   };
+
+  const handleArticleClick = (id) => {
+    navigate(`/article/${id}`); // Navigate to the Article component
+  }
 
   return (
     <div className="min-h-screen flex flex-col  items-center justify-center ">
@@ -40,7 +46,7 @@ const BlogView = () => {
             <h2 className="text-1xl text-white mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
 
             <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
-            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
+            <button onClick={() => handleArticleClick(1)} className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
           </div>
         </div>
 
@@ -51,7 +57,7 @@ const BlogView = () => {
             <h2 className="text-1xl text-white pt-2 mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
 
             <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
-            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
+            <button onClick={() => handleArticleClick(2)} className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
           </div>
         </div>
 
@@ -62,7 +68,7 @@ const BlogView = () => {
             <h2 className="text-1xl text-white mt-2">La tecnologia puede simplificar nuestra vida y ayudarnos a cumplir nuestros sueños</h2>
 
             <p className="text-md font-thin text-white pt-2 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quis neque quidem assumenda ipsam necessitatibus obcaecati eius nulla inventore voluptas, cum impedit consequatur, ipsa, id voluptates explicabo corrupti recusandae? Voluptas?</p>
-            <button className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
+            <button onClick={() => handleArticleClick(3)} className="bg-customGreen text-white px-16 py-2 mt-8 rounded-md">Ver articulo</button>
           </div>
         </div>
       </div>
