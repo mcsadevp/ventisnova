@@ -3,12 +3,12 @@ import Navbar from "./Navbar";
 import { useAuth } from '../context/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import { NavLink } from 'react-router-dom';
-import { useAlert } from '../context/AlertContext'; 
+import { useAlert } from '../context/AlertContext';
 
 const UserDashboard = () => {
   const { setAlert } = useAlert();
   const { user, logout } = useAuth();
-  const [newName, setNewName] = useState(user ? user.displayName || user.email : ''); // Usa email si displayName es undefined
+  const [newName, setNewName] = useState(user ? user.displayName || user.email : '');
   const [newEmail, setNewEmail] = useState(user ? user.email : '');
   const [newPassword, setNewPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -43,17 +43,17 @@ const UserDashboard = () => {
   return (
     <div className="dashboard">
       <div className="w-full h-full relative">
-        <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385]">
+        <div className="w-full h-40 text-center bg-gradient-to-b from-[#174839] to-[#44A385] md:pt-10 pt-3">
           <Navbar />
-          <h2 className="text-3xl font-semibold text-white leading-tight text-left ml-[85px]">
-            Bienvenido: {newName || newEmail} 
+          <h2 className="text-2xl font-semibold text-white leading-tight mt-14 text-left ml-[85px] md:mt-8">
+            Bienvenido: {newName || newEmail}
           </h2>
           <p className="text-white text-lg mt-2 text-left ml-[85px]">
             Modificá tus datos personales y de contacto.
           </p>
         </div>
-        <div>
-          <div className="bg-customFormGreen text-white px-8 py-6 rounded-lg shadow-lg absolute left-1/2 transform -translate-x-1/2 top-[210%] -translate-y-1/2 w-11/12 max-w-4xl">
+        <div class="flex justify-center w-full">
+          <div className="bg-customFormGreen text-white px-8 py-6 rounded-lg shadow-lg ml-1 w-11/12 max-w-4xl md: my-10 ">
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <input
@@ -97,17 +97,17 @@ const UserDashboard = () => {
                   title="Debe contener al menos un número, una letra minúscula, una letra mayúscula y al menos 8 o más caracteres"
                 />
               </div>
-              <div>
+              <div className="w-full h-full flex flex-col items-center md:flex-row md:justify-center md:space-x-4">
                 <button
                   type="submit"
-                  className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full"
+                  className="bg-customGreen text-white py-2 px-4 rounded hover:bg-teal-800 transition duration-300 w-[295px] md:w-[250px] mb-4 md:mb-0"
                 >
                   Guardar cambios
                 </button>
                 <NavLink to='/'>
                   <button
                     type="button"
-                    className="bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition duration-300 w-full"
+                    className="bg-customGreen text-white py-2 px-4 rounded hover:bg-teal-800 transition duration-300 w-[295px] md:w-[250px]"
                     onClick={handleLogout}
                   >
                     Logout
