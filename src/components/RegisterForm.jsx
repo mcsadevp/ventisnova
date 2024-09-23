@@ -65,7 +65,7 @@ function RegisterForm() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center bg-transparent text-white w-[304px] h-[430px] ml-[80px] mt-[50px]">
+    <div className="bg-white bg-opacity-10 p-10 md:mt-12 mt-14 rounded-lg shadow-lg max-w-lg w-full md:p-10 md:px-32 mx-5">
       <h2 className="text-xl font-bold mb-6">Registrarse</h2>
       <form className="w-full flex flex-col items-center" onSubmit={handleRegister}>
         <input

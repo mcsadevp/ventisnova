@@ -25,14 +25,16 @@ const BlogPost = () => {
   if (!blog) return <div>Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-800 to-green-500 p-6">
-      <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-6">
+    <div className="min-h-screen">
+      <div className="w-full h-36 text-center bg-gradient-to-b from-[#174839] to-[#44A385] md:pt-10 pt-3">
+      <h1 className="text-3xl font-bold text-white mb-4">{blog.titulo}</h1>
+        </div>
+      <div className="max-w-4xl mx-auto rounded-lg shadow-lg p-6">
         <img
           src={blog.imagen}
           alt={blog.titulo}
           className="w-full h-64 object-cover rounded-lg mb-6"
         />
-        <h1 className="text-3xl font-bold text-white mb-4">{blog.titulo}</h1>
         <div className="text-gray-400 text-lg leading-relaxed">
           {blog.contenidoCompleto.split('\n').map((paragraph, idx) => (
             <p key={idx} className="mb-4">

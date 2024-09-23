@@ -3,7 +3,9 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 
 const BlogList = () => {
-    const [blogs, setBlogs] = useState([]); // Mantener como array vacío
+    const [blogs, setBlogs] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const blogsPerPage = 3;
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -18,39 +20,54 @@ const BlogList = () => {
         fetchBlogs();
     }, []);
 
+    const indexOfLastBlog = currentPage * blogsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+    const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     return (
-        <div className="min-h-screen bg-gradient-to-b from-green-800 to-green-500 p-6">
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl font-bold text-white mb-6">Blog</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {blogs.length === 0 ? ( // Verifica si blogs está vacío
-                        <p className="text-white">No hay blogs disponibles.</p>
-                    ) : (
-                        blogs.map((blog) => (
-                            <div
-                                key={blog.id}
-                                className="bg-gray-800 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out"
-                            >
+        <div className="min-h-screen  p-6">
+            <div className="max-w-4xl mx-auto space-y-6">
+                {currentBlogs.map((blog) => (
+                    <div key={blog.id} className="rounded-lg overflow-hidden border border-white">
+                        <div className="flex flex-col md:flex-row">
+                            <div className="md:w-1/2 h-full">
                                 <img
                                     src={blog.imagen}
                                     alt={blog.titulo}
-                                    className="w-full h-48 object-cover"
+                                    className="w-full h-full object-cover"
                                 />
-                                <div className="p-4">
+                            </div>
+                            <div className="md:w-1/2 p-6 flex flex-col justify-between">
+                                <div>
                                     <h2 className="text-xl font-bold text-white mb-2">
                                         {blog.titulo}
                                     </h2>
-                                    <p className="text-gray-400 mb-4">{blog.resumen}</p>
-                                    <button
-                                        onClick={() => (window.location.href = `/noticiaView/${blog.slug}`)}
-                                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-                                    >
-                                        Ver artículo
-                                    </button>
+                                    <p className="text-gray-400 mb-4 line-clamp-3">{blog.resumen}</p>
                                 </div>
+                                <button
+                                    onClick={() => (window.location.href = `/noticiaView/${blog.slug}`)}
+                                    className="bg-customGreen text-white py-2 px-4 rounded hover:bg-teal-800 transition duration-300 w-[295px] md:w-[250px]"
+                                >
+                                    Ver artículo
+                                </button>
                             </div>
-                        ))
-                    )}
+                        </div>
+                    </div>
+                ))}
+                <div className="flex justify-center mt-6">
+                    {[...Array(Math.ceil(blogs.length / blogsPerPage))].map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => paginate(index + 1)}
+                            className={`mx-1 px-3 py-1 rounded ${
+                                currentPage === index + 1 ? 'bg-customGreen text-white' : 'bg-gray-300 text-gray-700'
+                            }`}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

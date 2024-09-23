@@ -1,3 +1,15 @@
+/**
+ * @file AdminCheck.jsx
+ * @description Componente que verifica si un usuario tiene privilegios de admin en la aplicación.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author McKinstong
+ * @company Ventisnova
+ * @license Copyright © 2024 Vebtisnova
+ * @notes Verifica la propiedad isAdmin.
+ */
+
+
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebaseConfig"; 
 import { doc, getDoc } from "firebase/firestore";
@@ -34,7 +46,7 @@ const AdminCheck = ({ children }) => {
 
   return (
     <div>
-      {children(isAdmin)} {/* Pasa isAdmin como argumento a los children */}
+      {children(isAdmin)} 
     </div>
   );
 };

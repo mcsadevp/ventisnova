@@ -12,7 +12,7 @@ const HomeView = () => {
 
       <div className="h-1/2  bg-custom-gradient ">
         <Navbar />
-        <nav className="flex justify-between items-center p-6">{/* Navigation can go here if needed */}</nav>
+        <nav className="flex justify-between items-center p-6"></nav>
         <div className="flex flex-col md:flex-row items-center justify-center px-6 py-12">
           {/* Text Section */}
           <div className="w-full text-center md:w-1/2">
