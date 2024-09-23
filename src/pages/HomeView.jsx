@@ -13,7 +13,7 @@ const HomeView = () => {
           {/* Text Section */}
           <div className="md:w-1/2">
             <h2 className="text-3xl font-semibold text-white leading-tight md:text-5xl">
-              ¡No dejes que la falta <br /> de experiencia te detenga!
+             Potencia tus habilidades, <br/>simplifica tu mundo
             </h2>
             <p className="text-white text-3xl mt-6">La tecnologia es una herramienta poderosa.</p>
             <p className="text-white text-xl font-thin hidden md:block">
