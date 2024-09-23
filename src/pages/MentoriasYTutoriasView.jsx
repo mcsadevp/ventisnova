@@ -2,12 +2,15 @@ import image10 from '../assets/image 10.png';
 import campaingCreators from '../assets/campaign-creators-qCi_MzVODoU-unsplash 1.png';
 import image13 from '../assets/image 13.png';
 import ondasFondo from '../assets/onda2.png';
+import semiCirculos from '../assets/semi-circulo.jpeg';
 import { Link } from 'react-router-dom';
 import { IoChatbubblesOutline, IoPersonOutline } from 'react-icons/io5';
 import FAQ from '../components/FAQ';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react'
+import Footer from '../components/Footer';
+
 
 const faqData = [
   {
@@ -44,7 +47,7 @@ const MentoriasYTutoriasView = () => {
 
   return (
     <div className='flex flex-col w-full'>
-      <div className='bg-custom-gradient'>
+      <div className='bg-cover' style={{ backgroundImage: `url(${ semiCirculos }) `}}>
         <Navbar />
         <div className='w-full py-24 px-24 md:max-h-[600px]'>
           <h1 className='text-white md:text-5xl text-3xl font-bold md:max-w-[400px]'>MENTORÍAS Y TUTORÍAS</h1>
@@ -71,18 +74,25 @@ const MentoriasYTutoriasView = () => {
 
      
 
-      <div className='w-full mx-auto flex flex-col md:flex-row'>
-        <div className="flex items-center justify-center">
-          <img src={image13} alt="Grupo de estudiantes" />
+      <div className='w-full mx-auto flex flex-col md:flex-row relative'>
+          {/* Imagen */}
+          <div className="flex items-center justify-center md:w-auto w-full h-full md:h-auto absolute md:relative">
+              <img
+                  src={image13}
+                  alt="Grupo de estudiantes"
+                  className="w-full h-full object-cover md:object-contain"
+              />
+          </div>
+          
+          {/* Texto */}
+          <div className="md:w-1/2 mt-10 md:mt-24 md:pl-8 text-white px-3 mb-10 text-lg relative z-10 bg-customDarkGreen p-5 md:z-auto mx-5 md:mx-0">
+              <p>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
+              <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5'>
+                  <li>Clases grupales.</li>
+                  <li>Canales de chat abiertos y consultas.</li>
+              </ul>
+          </div>
         </div>
-        <div className="md:w-1/2 mt-8 md:mt-24 md:pl-8 text-white px-3 mb-10 text-lg">
-          <p>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
-          <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5'>
-            <li>Clases grupales.</li>
-            <li>Canales de chat abiertos y consultas.</li>
-          </ul>
-        </div>
-      </div>
 
       <div className='w-full h-[188px] bg-white flex justify-center items-center flex-col'>
         <h1 className='text-xl font-semibold text-center'>Unite a nuestra comunidad de emprendedores</h1>
@@ -92,90 +102,94 @@ const MentoriasYTutoriasView = () => {
         <p className='text-sm'>Si ya estás registrado, <Link to="/perfil"><span className='underline text-sm cursor-pointer'>iniciá sesión</span></Link></p>
       </div>
 
-      <div className='relative'>
-        <div className='lg:h-[500px] lg:w-[1000px] absolute top-0 left-0 -z-10 hidden lg:block' style={{ backgroundImage: `url(${ondasFondo})`, backgroundSize: 'contain', backgroundPosition: 'center' }} />
-        <div className="flex justify-center mt-12">
-          <div className="container mx-auto">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-white ml-2 md:ml-0">¡Elegí tu curso ideal!</h2>
-            </div>
+        <div className='relative'> {/* ondas */}
+          <div className='lg:h-[500px] lg:w-[1000px] absolute top-0 left-0 -z-10 hidden lg:block' style={{ backgroundImage:`url(${ondasFondo})`, backgroundSize: 'countain', backgroundPosition: 'center' }}>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 gap-4">
-                {/* Primera card */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
-                  <img 
-                    src={campaingCreators}
-                    alt="Imagen card 1" 
-                    className="w-full h-40 object-cover" 
-                  />
-                  <div className="p-4">
-                    <div className='flex justify-between'>
-                      <h3 className="text-lg font-semibold mb-2">Mentorías</h3>
-                      <IoPersonOutline size={35} className='-mt-2' />
-                    </div>
-                    <p className="text-gray-600 mb-4 text-sm">Transformá tus ideas en proyectos rentables con la guía de un experto. Recibí acompañamiento en cada paso, desde la creación de tu negocio hasta el cierre de contratos con clientes. ¡Llevá tu visión a la acción y construí tu futuro!</p>
-                    <div className='flex items-center mb-2'>
-                      <p className='text-sm font-semibold'>Online en vivo</p>
-                      <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
-                        <div className='w-2 h-2 bg-red-600 rounded-full'></div>
-                      </div>
-                    </div>
-                    <p className='text-sm font-semibold'>Plan estándar USD 300</p>
-                    <div className="mt-auto">
-                      <Link to={"/mentorias"}>
-                        <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
-                          Ver curso
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Segunda card */}
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
-                  <img 
-                    src={image10}
-                    alt="Imagen card 2" 
-                    className="w-full h-40 object-cover" 
-                  />
-                  <div className="p-4">
-                    <div className='flex justify-between'>
-                      <h3 className="text-lg font-semibold mb-2">Tutorías</h3>
-                      <IoChatbubblesOutline size={35} className="-mt-2" />
-                    </div>
-                    <p className="text-gray-600 mb-4 text-sm">Aprendé a transformar oportunidades en proyectos rentables a través de clases teóricas. Descubrí estrategias claves para desarrollar tu negocio, desde la planificación hasta la ejecución. ¡Preparate para llevar tus ideas al siguiente nivel!</p>
-                    <div className='flex items-center mb-2'>
-                      <p className='text-sm font-semibold'>Online en vivo</p>
-                      <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
-                        <div className='w-2 h-2 bg-red-600 rounded-full'></div>
-                      </div>
-                    </div>
-                    <p className='text-sm font-semibold'>Plan estándar USD 200</p>
-                    <div className="mt-auto">
-                      <Link to={"/tutorias"}>
-                        <button className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
-                          Ver curso
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+          </div>
+          <div className="flex justify-center mt-12">
+            <div className="container mx-auto">
+              {/* Texto encima de las cards */}
+              <div className=" mb-6">
+                <h2 className="text-2xl font-bold text-white ml-3 md:ml-0">¡Elegí tu curso ideal!</h2>
               </div>
 
-              {/* Texto a la derecha de las cards */}
-              <div className="text-white p-4 rounded-lg md:w-[450px] hidden md:block">
-                <h2 className="text-2xl font-semibold mb-4">¿Necesitás ayuda para llevar a tierra tus ideas de negocio?</h2>
-                <p>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
+              {/* Grid de cards y texto */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                {/* Contenedor de las cards */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-12 gap-8 px-4 md:px-0">
+                  {/* Primera card */}
+                  <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
+                    <img 
+                      src={campaingCreators}
+                      alt="Imagen card 1" 
+                      className="w-full h-40 object-cover" 
+                    />
+                    <div className="p-4">
+                      <div className='flex justify-between'>
+                        <h3 className="text-lg font-semibold mb-2">Mentorías</h3>
+                        <IoPersonOutline size={35} className='-mt-2'/>
+                      </div>
+                      <p className="text-gray-600 mb-4 text-sm">Transformá tus ideas en proyectos rentables con la guía de un experto. Recibí acompañamiento en cada paso, desde la creación de tu negocio hasta el cierre de contratos con clientes. ¡Llevá tu visión a la acción y construí tu futuro!</p>
+                      <div className='flex items-center mb-1'>
+                        <p className='text-sm font-semibold'>Online en vivo</p>
+                        <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
+                          <div className='w-2 h-2 bg-red-600 rounded-full'></div>
+                        </div>
+                      </div>
+                      <p className='text-sm font-semibold'>Plan estándar</p>
+                      <p className='font-semibold mb-3 text-xl'>USD 300</p>              
+                      <div className="mt-auto">
+                        <Link to={"/mentorias"} className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center">
+                            Ver curso
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Segunda card */}
+                  <div className="bg-white shadow-lg rounded-lg overflow-hidden border-2 border-customGreen">
+                    <img 
+                      src={image10}
+                      alt="Imagen card 2" 
+                      className="w-full h-40 object-cover" 
+                    />
+                    <div className="p-4">
+                      <div className='flex justify-between'>
+                        <h3 className="text-lg font-semibold mb-2">Tutorías</h3>
+                        <IoChatbubblesOutline size={ 35 } className="-mt-2"/>
+                      </div>
+                      <p className="text-gray-600 mb-2 text-sm">Aprendé a transformar oportunidades en proyectos rentables a través de clases teóricas dadas. Descubrí estrategias claves para desarrollar tu negocio, desde la planificación hasta la ejecución. ¡Preparate para llevar tus ideas al siguiente nivel!</p>
+                      <div className='flex items-center mb-1'>
+                        <p className='text-sm font-semibold'>Online en vivo</p>
+                        <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
+                          <div className='w-2 h-2 bg-red-600 rounded-full'></div>
+                        </div>
+                      </div>
+                      <p className='text-sm font-semibold'>Plan estándar</p>
+                      <p className='font-semibold mb-4 text-xl'>USD 200</p>              
+                      <div className="mt-auto">
+                        <Link to={"/tutorias"} className="bg-customGreen px-4 py-2 rounded flex mx-auto w-full justify-center" >
+                            Ver curso
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Texto a la derecha de las cards */}
+                <div className=" text-white p-4 md:p-14 rounded-lg md:w-[480px] md:mt-16">
+                  <h2 className="text-2xl font-semibold mb-4">¿Necesitás ayuda para llevar a tierra tus ideas de negocio?</h2>
+                  <p className='text-lg'>Ya sea que busques aprender las bases o recibir acompañamiento personalizado, tenemos el curso para vos. Nuestra <span className='text-[#10A274]'>Tutoría</span> te brindará el conocimiento necesario, y la <span className='text-[#10A274]'>Mentoría</span> te llevará de la mano hasta hacer realidad tu proyecto. ¡No esperes más, hacé realidad tus ideas!</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className='mt-12'>
-          <FAQ data={faqData} />
-        </div>
       </div>
+      {/* Preguntas frecuentes */}
+      <div className='mt-12 mx-4 md:mx-0 mb-4'>
+        <FAQ data={faqData} />
+      </div>
+      <Footer />
     </div>
   );
 };

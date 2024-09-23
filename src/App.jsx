@@ -14,6 +14,7 @@ import AdminArticleView from './pages/AdminArticleView';
 import MentoriasView from './pages/MentoriasView';
 import TutoriasView from './pages/TutoriasView';
 import NoticiaView from './pages/NoticiaView'; // Asegúrate de importar NoticiaView
+import FloatButtonWhatsapp from './components/FloatButtonWhatsapp';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -23,6 +24,7 @@ function ProtectedRoute({ children }) {
 function App() {
   return (
     <div>
+      <FloatButtonWhatsapp/>
       <AuthProvider>
         <AlertProvider>
           <Router>

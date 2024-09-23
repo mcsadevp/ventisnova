@@ -5,11 +5,12 @@ import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
+
 
 const HomeView = () => {
   return (
     <div>
-
       <div className="h-1/2  bg-custom-gradient ">
         <Navbar />
         <nav className="flex justify-between items-center p-6"></nav>
@@ -149,6 +150,7 @@ const HomeView = () => {
           <p className="text-white text-md font-normal leading-relaxed mb-4">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
+    <FloatButtonWhatsapp/>
       <Footer />
     </div>
   );
