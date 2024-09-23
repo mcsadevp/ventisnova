@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import image14 from '../assets/image 14.png'
+import semiCirculos from '../assets/semi-circulo.jpeg';
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 import FAQ from '../components/FAQ';
 import { useNavigate } from 'react-router-dom';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
 const faqData = [
   {
@@ -43,7 +46,7 @@ const MentoriasView = () => {
   return (
     <div>
       {/* Hero & navbar*/}
-      <div className="bg-custom-gradient">
+      <div className='bg-cover' style={{ backgroundImage: `url(${ semiCirculos })` }}>
         <Navbar />
         <div className=' w-full py-20 px-24'>
           <h1 className='text-white md:text-5xl text-3xl font-bold '>MENTORÍAS</h1>
@@ -154,20 +157,23 @@ const MentoriasView = () => {
         </div>
       </div>
       {/* Beneficios */}
-      <div className='container mx-auto w-[380px] md:w-[850px]  bg-custom-gradient-dos p-10 text-white flex flex-col mt-10 mb-5 rounded'>
-        <h1 className='text-3xl'>Beneficios</h1>
-        <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
-          <li>Encuentros pensados exclusivamente para tu idea de negocio. </li>
-          <li>Apoyo y acompañamiento constante por parte de tu mentor.</li>
-          <li>Herramientas adaptadas a las necesidades de tu proyecto.</li>
-        </ul>
+      <div className='mx-4 md:mx-0'>
+        <div className='container mx-auto md:w-[850px] bg-custom-gradient-dos p-10 text-white flex flex-col mt-10 mb-5 rounded'>
+          <h1 className='text-3xl'>Beneficios</h1>
+          <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
+            <li>Encuentros pensados exclusivamente para tu idea de negocio. </li>
+            <li>Apoyo y acompañamiento constante por parte de tu mentor.</li>
+            <li>Herramientas adaptadas a las necesidades de tu proyecto.</li>
+          </ul>
+        </div>
       </div>
       {/* Preguntas frecuentes */}
-      <div className='mt-12'>
+      <div className='mt-12 mx-4 md:mx-0 mb-4'>
         <FAQ data={faqData} />
       </div>
+      <Footer />
     </div>
   )
 }
 
-export default MentoriasView
+export default MentoriasView

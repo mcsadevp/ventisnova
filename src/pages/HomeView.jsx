@@ -5,6 +5,8 @@ import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
+
 
 const HomeView = () => {
   return (
@@ -156,7 +158,12 @@ const HomeView = () => {
           <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
+<<<<<<< HEAD
       <Footer/>
+=======
+    <FloatButtonWhatsapp/>
+      <Footer />
+>>>>>>> 314f2153d4f0f1c481e717fce433c088de107185
     </div>
   );
 };

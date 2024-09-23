@@ -27,7 +27,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen">
       <div className="w-full h-36 text-center bg-gradient-to-b from-[#174839] to-[#44A385] md:pt-10 pt-3">
-      <h1 className="text-3xl font-bold text-white mb-4">{blog.titulo}</h1>
+      <h1 className="text-3xl font-bold mt-5 text-white text-center mb-4">{blog.titulo}</h1>
         </div>
       <div className="max-w-4xl mx-auto rounded-lg shadow-lg p-6">
         <img
