@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-gray-800 py-5 text-white text-center">
+    <footer className="bg-customDarkerGreen py-5 text-white text-center">
       <div className="flex flex-col items-center max-w-5xl mx-auto">
         <p>&copy; 2024 VENTISNOVA. Todos los derechos reservados.</p>
         <ul className="list-none p-0 mt-2 flex gap-4">
