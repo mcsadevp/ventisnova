@@ -96,7 +96,7 @@ const HomeView = () => {
 
           {/* Right Text Section (appears at the top on mobile) */}
           <div className="rounded-lg">
-            <h2 className="text-3xl text-white mb-4">Habilidades Digitales</h2>
+            <h2 className="text-3xl text-white mb-4">Tutorías y mentorías</h2>
             <p className="text-white text-xl font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
             <p className="text-white text-xl font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
             <div className="hidden md:flex justify-center mt-4">
@@ -164,8 +164,12 @@ const HomeView = () => {
           <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
+<<<<<<< HEAD
       <FloatButtonWhatsapp />
       <Footer />
+=======
+      <Footer/>
+>>>>>>> 3e580a04e3552d4d5f1c65161417ad7731159648
     </div>
   );
 };
