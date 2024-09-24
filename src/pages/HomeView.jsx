@@ -164,12 +164,7 @@ const HomeView = () => {
           <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
-<<<<<<< HEAD
-      <FloatButtonWhatsapp />
-      <Footer />
-=======
       <Footer/>
->>>>>>> 3e580a04e3552d4d5f1c65161417ad7731159648
     </div>
   );
 };
