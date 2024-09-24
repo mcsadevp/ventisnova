@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
-
 const HomeView = () => {
   return (
     <div>
@@ -27,8 +26,9 @@ const HomeView = () => {
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </p>
-
-            <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Potenciate ahora</button>
+            <NavLink to="/register">
+              <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Potenciate ahora</button>
+            </NavLink>
           </div>
 
           {/* Image Section */}
@@ -45,14 +45,15 @@ const HomeView = () => {
       <div className="bg-white w-full h-60 flex justify-center items-center">
         <div className="flex flex-col justify-center items-center text-center">
           <h1 className="text-xl sm:text-2xl font-semibold text-black">Unite a nuestra comunidad de emprendedores.</h1>
-          <NavLink to="/register" />
-          <button className="bg-customGreen text-black font-semibold px-6 py-2 mt-4 rounded-md">Registrate</button>
+          <NavLink to="/register">
+            <button className="bg-customGreen text-black font-semibold px-6 py-2 mt-4 rounded-md">Registrate</button>
+          </NavLink>
+          <NavLink to="/login" />
           <p className="text-black mt-4">Si ya estas registrado, iniciá sesion</p>
           <NavLink />
         </div>
       </div>
 
-      {/* container de habilidades y tutorias */}
       {/* container de habilidades y tutorias */}
       <div className="bg-customDarkGreen p-8 flex justify-center items-center ">
         {/* First Container */}
@@ -63,16 +64,19 @@ const HomeView = () => {
             <p className="text-white text-xl font-thin mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
             <p className="text-white text-xl font-thin">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
             <div className="hidden md:flex justify-center mt-4">
-              <NavLink to="/mentorias-y-tutorias"></NavLink>
-              <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
-              <NavLink />
+              <NavLink to="/mentorias-y-tutorias">
+                <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
+              </NavLink>
             </div>
           </div>
 
-          {/* Right Image Section */}
-          <div className=" relative h-full w-full flex items-center justify-center">
-            <button className="md:hidden absolute  bg-customGreen text-white px-16 py-2 rounded-md z-10">Ver cursos</button>
-            <img src={image6} alt="image6" className="object-cover  h-full w-full rounded-lg" />
+          <div className="relative h-full w-full flex items-center justify-center">
+            <NavLink to="/mentorias-y-tutorias">
+              <button className="md:hidden absolute bg-customGreen text-white px-8 py-2 rounded-md z-10 whitespace-nowrap" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                Ver cursos
+              </button>
+            </NavLink>
+            <img src={image6} alt="image6" className="object-cover h-full w-full rounded-lg" />
           </div>
         </div>
       </div>
@@ -84,7 +88,9 @@ const HomeView = () => {
           {/* Left Image Section (appears at the bottom on mobile) */}
           <div className="relative rounded-lg overflow-hidden">
             {/* Button centered on the image */}
-            <button className="md:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customGreen text-white px-8 py-2 rounded-md z-10">Inscribirme</button>
+            <NavLink to="/mentorias-y-tutorias">
+              <button className="md:hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-customGreen text-white px-8 py-2 rounded-md z-10">Inscribirme</button>
+            </NavLink>
             <img src={image11} alt="image11" className="object-cover h-full w-full rounded-lg" />
           </div>
 
@@ -158,12 +164,8 @@ const HomeView = () => {
           <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
-<<<<<<< HEAD
-      <Footer/>
-=======
-    <FloatButtonWhatsapp/>
+      <FloatButtonWhatsapp />
       <Footer />
->>>>>>> 314f2153d4f0f1c481e717fce433c088de107185
     </div>
   );
 };
