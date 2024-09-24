@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`bg-customDarkGreen fixed top-0 w-full z-10 text-white transition-transform duration-500 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
+    <nav className={`bg-customDarkGreen fixed top-0 w-full z-20 text-white transition-transform duration-500 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
       <div className="md:mx-16 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo y enlaces */}
         <div className="flex items-center space-x-8">
