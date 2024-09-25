@@ -18,21 +18,21 @@ const HomeView = () => {
           {/* Text Section */}
           <div className="md:w-1/2">
             <h2 className="text-3xl font-semibold text-white leading-tight md:text-5xl">
-              Potencia tus habilidades, <br />
-              simplifica tu mundo
+              Potencia tus habilidades <br />
+              Simplifica tu mundo
             </h2>
             <p className="text-white text-3xl mt-6">La tecnologia es una herramienta poderosa.</p>
-            <p className="text-white text-xl font-thin hidden md:block">
+            <p className="text-white text-xl font-semibold hidden md:block">
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </p>
             <NavLink to="/register">
-              <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 ">Potenciate ahora</button>
+              <button className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 hover: bg-white to bg-cus">Potenciate ahora</button>
             </NavLink>
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center hidden md:block relative h-[400px]">
+          <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center hidden md:block relative h-[400px]">
             {/* Adjust this height */}
             <div className="absolute -inset-5 bottom-0 p-4 rounded-full ">
               <img src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%] " />
