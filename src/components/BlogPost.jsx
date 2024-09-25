@@ -22,7 +22,7 @@ const BlogPost = () => {
     fetchBlog();
   }, [slug]);
 
-  if (!blog) return <div>Loading...</div>;
+  if (!blog) return <div className='text-white text-center'>Cargando...</div>;
 
   return (
     <div className="min-h-screen">
