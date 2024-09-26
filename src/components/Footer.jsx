@@ -1,16 +1,29 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { CiMail } from 'react-icons/ci';
+import { NavLink } from 'react-router-dom';
+
 function Footer() {
   return (
-    <footer className="bg-customDarkerGreen py-5 text-white text-center">
-      <div className="flex flex-col items-center max-w-5xl mx-auto">
-        <p>&copy; 2024 VENTISNOVA. Todos los derechos reservados.</p>
-        <ul className="list-none p-0 mt-2 flex gap-4">
-          <li><a href="mailto:info@ventisnova.com.ar" className="text-white hover:underline">Envíanos un correo</a></li>
-          <li><a href="https://api.whatsapp.com/send?phone=5491166850200" className="text-white hover:underline">nuestro WhatsApp</a></li>
-          <li><a href="https://www.linkedin.com/company/ventisnova" target="_blank" className="text-white hover:underline">Mira nuestro LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/ventisnova/" target="_blank" className="text-white hover:underline">Visita nuestro IG</a></li>
-        </ul>
-      </div>
-    </footer>
+    <>
+      <hr className="mt-8" />
+      <footer className="bg-customGradient py-5 text-white text-center">
+        <div className="social-icons  flex justify-center space-x-6  ">
+          <a href="https://www.linkedin.com/company/ventisnova" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faLinkedin} className="icon mx-4 text-3xl" />
+          </a>
+          <a href="https://www.instagram.com/ventisnova/" target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} className="icon text-3xl mr-4 " />
+          </a>
+          <NavLink to="/contact">
+            <CiMail className="icon text-3xl" />
+          </NavLink>
+        </div>
+        <div className="mt-4">
+          <p>© 2024 Ventis Nova. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+    </>
   );
 }
 

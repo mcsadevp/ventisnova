@@ -11,7 +11,7 @@ const NoticiaView = () => {
         <Navbar />
       </div>
       {/* Back Arrow Icon */}
-      <div className="absolute top-20 left-4 md:top-28 md:ml-8 z-50">
+      <div className="absolute top-20 left-4  md:top-28 md:ml-8 z-50">
         <NavLink to="/blogView">
           {/* Adjust arrow size based on screen size */}
           <IoMdArrowBack
