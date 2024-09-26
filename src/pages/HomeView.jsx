@@ -5,7 +5,7 @@ import maskgroup from '../assets/Mask group.png';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
+// import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp';
 
 const HomeView = () => {
   return (
@@ -61,8 +61,8 @@ const HomeView = () => {
           {/* Left Text Section */}
           <div className=" flex flex-col justify-center rounded-lg">
             <h2 className="text-3xl text-white mb-4 ">Habilidades Digitales</h2>
-            <p className="text-white text-xl font-thin mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
-            <p className="text-white text-xl font-thin">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
+            <p className="text-white text-lg font-normal mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
+            <p className="text-white text-lg font-normal">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
             <div className="hidden md:flex justify-center mt-4">
               <NavLink to="/mentorias-y-tutorias">
                 <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
@@ -97,8 +97,8 @@ const HomeView = () => {
           {/* Right Text Section (appears at the top on mobile) */}
           <div className="rounded-lg">
             <h2 className="text-3xl text-white mb-4">Tutorías y mentorías</h2>
-            <p className="text-white text-xl font-thin mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
-            <p className="text-white text-xl font-thin">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
+            <p className="text-white text-lg font-normal mb-4">Con nuestras sesiones personalizadas nos enfocaremos en tus metas y pasiones, para que comiences tu emprendimiento con todas las herramientas necesarias y crees un negocio rentable.</p>
+            <p className="text-white text-lg font-normal">Te ofrecemos guía y apoyo continuos de un mentor experimentado, que te ayudará a potenciar tus habilidades y hacer crecer tu proyecto.</p>
             <div className="hidden md:flex justify-center mt-4">
               <NavLink to="/mentorias-y-tutorias">
                 {' '}
@@ -124,7 +124,7 @@ const HomeView = () => {
           {/* Mision */}
           <div className="order-1 md:order-none">
             <h2 className="text-3xl font-bold text-white text-center pt-8 md:pt-16">Misión</h2>
-            <p className="text-white text-xl font-thin text-center">
+            <p className="text-white text-lg font-normal text-center">
               En Ventisnova queremos <br />
               potenciar cada talento, <br />
               sin importar su rubro, <br />
@@ -143,7 +143,7 @@ const HomeView = () => {
           {/* Vision */}
           <div className="order-2 md:order-none">
             <h2 className="text-3xl font-bold text-white text-center pt:8 md:pt-16">Visión</h2>
-            <p className="text-white text-xl font-thin text-center">
+            <p className="text-white text-lg font-normal text-center">
               Aspiramos a una realidad en <br />
               la que emprender sea <br />
               sencillo y rentable, para que <br />
@@ -164,7 +164,7 @@ const HomeView = () => {
           <p className="text-white text-l font-normal leading-relaxed mb-2">05. Colaboración: Te acompañamos en cada uno de los pasos hacia tus metas.</p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
