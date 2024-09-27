@@ -1,8 +1,10 @@
 import React from 'react'
+import FloatButtonWhatsapp from '../components/FloatButtonWhatsapp'
 
 const BlogView = () => {
   return (
-    <div>BlogView</div>
+    <div>BlogView <FloatButtonWhatsapp /></div>
+    
   )
 }
 

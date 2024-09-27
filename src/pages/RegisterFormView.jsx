@@ -1,21 +1,27 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 import RegisterForm from "../components/RegisterForm";
-import backgroundImage from "../assets/page-register.png";
+import Navbar from "../components/Navbar";
+import backgroundImage from '../assets/registerImage.jpg';
 
 function RegisterFormView() {
   const auth = useAuth();
-
   return (
     <div 
-      className="register-view w-screen h-screen bg-cover bg-center flex"
-      style={{
-        backgroundImage: `url(${backgroundImage})`
+      className={`h-screen flex flex-col flex-1 bg-center bg-no-repeat`} 
+      style={{ 
+        backgroundImage: `url(${backgroundImage})`,  
+        backgroundSize: 'cover'
       }}
     >
+      <Navbar/>
+      <div className="flex flex-1 items-center justify-center">
+
       <RegisterForm auth={auth} />
+      </div>
     </div>
   );
-}
+  }
 
 export default RegisterFormView;
+

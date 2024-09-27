@@ -1,14 +1,16 @@
-import React from "react";
 import { useAuth } from "../context/AuthContext";
 import UserDashboard from "../components/UserDashboard";
-import backgroundImage from "../assets/page-login.png";
+import Footer from "../components/Footer"
+import FloatButtonWhatsapp from "../components/FloatButtonWhatsapp";
 
 function UserDashboardView() {
   const auth = useAuth();
 
   return (
-    <div className="dashboard-view">
+    <div className="min-h-screen flex flex-col justify-between">
       <UserDashboard auth={auth} />
+      <Footer/>
+      <FloatButtonWhatsapp />
     </div>
   );
 }
