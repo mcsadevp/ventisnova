@@ -17,7 +17,7 @@ const HomeView = () => {
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-32 py-12">
           {/* Text Section */}
           <div className="md:w-1/2">
-            <motion.h2 whileInView={{ opacity: 1, x: 0 }}        initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
+            <motion.h2 whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
               Potencia tus habilidades <br />
               Simplifica tu mundo
             </motion.h2>
@@ -35,8 +35,8 @@ const HomeView = () => {
             </NavLink>
           </div>
           {/* Image Section */}
-          <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
-            <div className="absolute -inset-5 bottom-0 p-4 rounded-full ">
+          <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
+            <div className="absolute -inset-5 bottom-0 p-4 rounded-full">
               <motion.img initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%]" />
             </div>
           </div>
@@ -55,35 +55,8 @@ const HomeView = () => {
         </div>
       </div>
 
-      {/* container de habilidades y tutorias */}
-      <div className="bg-customDarkGreen p-8 flex justify-center items-center ">
-        {/* First Container */}
-        <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className=" w-full max-w-6xl grid md:grid-cols-2 gap-8 mb-0 border border-white  rounded-lg p-6">
-          {/* Left Text Section */}
-          <div className=" flex flex-col justify-center rounded-lg">
-            <h2 className="text-3xl text-white mb-4 ">Habilidades Digitales</h2>
-            <p className="text-white text-lg font-normal mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
-            <p className="text-white text-lg font-normal">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
-            <div className="hidden md:flex justify-center mt-4">
-              <NavLink to="/mentorias-y-tutorias">
-                <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
-              </NavLink>
-            </div>
-          </div>
-
-          <div className="relative h-full w-full flex items-center justify-center">
-            <NavLink to="/mentorias-y-tutorias">
-              <button className="md:hidden absolute bg-customGreen text-white px-8 py-2 rounded-md z-10 whitespace-nowrap" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-                Ver cursos
-              </button>
-            </NavLink>
-            <img src={image6} alt="image6" className="object-cover h-full w-full rounded-lg" />
-          </div>
-        </motion.div>
-      </div>
-
       {/* container de tutorias y habilidades */}
-      <motion.div initial={{ opacity: 0, x: 300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="bg-customDarkGreen p-8 flex justify-center items-center">
+      <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className="bg-customDarkGreen p-8 flex justify-center items-center">
         {/* First Container */}
         <div className="w-full max-w-6xl flex flex-col-reverse md:grid md:grid-cols-2 gap-8 mb-1 border border-white rounded-lg p-6">
           {/* Left Image Section (appears at the bottom on mobile) */}
@@ -109,6 +82,33 @@ const HomeView = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* container de habilidades y tutorias */}
+      <div className="bg-customDarkGreen p-8 flex justify-center items-center ">
+        {/* First Container */}
+        <motion.div initial={{ opacity: 0, x: 300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className=" w-full max-w-6xl grid md:grid-cols-2 gap-8 mb-0 border border-white  rounded-lg p-6">
+          {/* Left Text Section */}
+          <div className=" flex flex-col justify-center rounded-lg">
+            <h2 className="text-3xl text-white mb-4 ">Habilidades Digitales</h2>
+            <p className="text-white text-lg font-normal mb-4">¡Potenciá tus habilidades digitales con nuestros programas! Ofrecemos orientación personalizada para ayudarte a planificar y avanzar en tu carrera tecnológica.</p>
+            <p className="text-white text-lg font-normal">Aprendé sobre habilidades tecnológicas, ¡a tu propio ritmo! También te apoyamos en el desarrollo de tus propios proyectos tecnológicos.</p>
+            <div className="hidden md:flex justify-center mt-4">
+              <NavLink to="/mentorias-y-tutorias">
+                <button className="bg-customGreen text-white px-16 py-2 mt-4  rounded-md">Ver cursos</button>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="relative h-full w-full flex items-center justify-center">
+            <NavLink to="/mentorias-y-tutorias">
+              <button className="md:hidden absolute bg-customGreen text-white px-8 py-2 rounded-md z-10 whitespace-nowrap" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                Ver cursos
+              </button>
+            </NavLink>
+            <img src={image6} alt="image6" className="object-cover h-full w-full rounded-lg" />
+          </div>
+        </motion.div>
+      </div>
 
       {/* Banner secundario */}
 
