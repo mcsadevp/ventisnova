@@ -85,9 +85,9 @@ const MentoriasYTutoriasView = () => {
           </div>
           
           {/* Texto */}
-          <div className="md:w-1/2 mt-10 md:mt-24 md:pl-8 text-white px-3 mb-10 text-lg relative z-10 bg-customDarkGreen p-5 md:z-auto mx-5 md:mx-0">
-              <p>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
-              <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5'>
+          <div className="relative md:w-1/2 z-10 p-6 bg-black bg-opacity-50 md:bg-opacity-0 text-white flex flex-col items-start justify-center">
+              <p className='lg:text-xl text-md'>¡El aprendizaje grupal ha demostrado ser más <span className='text-customGreen'>eficaz y </span><span className='text-customGreen'>motivador</span>! Al interactuar con tus compañeros de clase, tendrás la oportunidad de explorar nuevas ideas y potenciar tus proyectos.</p>
+              <ul className='list-disc space-y-2 mt-8 md:pl-4 px-5 lg:text-xl text-md'>
                   <li>Clases grupales.</li>
                   <li>Canales de chat abiertos y consultas.</li>
               </ul>
