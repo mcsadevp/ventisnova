@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
+import { animate, motion } from 'framer-motion';
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -30,11 +31,19 @@ const BlogList = () => {
     <div className="min-h-screen p-6">
       <div className="max-w-4xl mx-auto space-y-6">
         {currentBlogs.map((blog, index) => (
-          <div key={blog.id} className="rounded-lg overflow-hidden border border-white">
+          <motion.div
+            key={blog.id}
+            className="rounded-lg overflow-hidden border border-white"
+            initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }} // Mueve hacia la izquierda o derecha dependiendo del índice
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }} // Ajusta la duración y tipo de animación
+          >
             <div className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-              <div className="md:w-1/2 h-full">
+              {/* Imagen */}
+              <motion.div className="md:w-1/2 h-full">
                 <img src={blog.imagen} alt={blog.titulo} className="w-full h-full object-cover" />
-              </div>
+              </motion.div>
+              {/* Contenido */}
               <div className="md:w-1/2 p-6 flex flex-col justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-white mb-2">{blog.titulo}</h2>
@@ -45,7 +54,7 @@ const BlogList = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
         <div className="flex justify-center mt-6">
           {[...Array(Math.ceil(blogs.length / blogsPerPage))].map((_, index) => (

@@ -7,6 +7,9 @@ export default {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to bottom, rgba(16, 162, 116, 1), rgba(23, 72, 57, 0))',
       },
+      screens: {
+        'custom-xl': '1600px', // Custom breakpoint for 1600px
+      },
     },
   },
   plugins: [],

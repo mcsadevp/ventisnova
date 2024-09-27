@@ -17,29 +17,28 @@ const HomeView = () => {
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-32 py-12">
           {/* Text Section */}
           <div className="md:w-1/2">
-            <motion.h2 initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
+            <motion.h2 whileInView={{ opacity: 1, x: 0 }}        initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
               Potencia tus habilidades <br />
               Simplifica tu mundo
             </motion.h2>
-            <motion.p initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="text-white text-3xl mt-6">
+            <motion.p whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="text-white text-3xl mt-6">
               La tecnologia es una herramienta poderosa.
             </motion.p>
-            <motion.p initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} className="text-white text-xl font-semibold hidden md:block">
+            <motion.p whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} className="text-white text-xl font-semibold hidden md:block">
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </motion.p>
             <NavLink to="/register">
-              <motion.button initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 hover: bg-white to bg-cus">
+              <motion.button initial={{ opacity: 1, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 hover: bg-white to bg-cus">
                 Potenciate ahora
               </motion.button>
             </NavLink>
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center hidden md:block relative h-[400px]">
-            {/* Adjust this height */}
+          <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
             <div className="absolute -inset-5 bottom-0 p-4 rounded-full ">
-              <motion.img initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} whileInView={{ opacity: 1, x: 0 }} src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%] " />
+              <motion.img initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%]" />
             </div>
           </div>
         </div>
