@@ -34,7 +34,6 @@ const HomeView = () => {
               </motion.button>
             </NavLink>
           </div>
-
           {/* Image Section */}
           <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
             <div className="absolute -inset-5 bottom-0 p-4 rounded-full ">
@@ -43,7 +42,6 @@ const HomeView = () => {
           </div>
         </div>
       </div>
-      {/* register container */}
 
       <div className="bg-white w-full h-60 flex justify-center items-center">
         <div className="flex flex-col justify-center items-center text-center">
