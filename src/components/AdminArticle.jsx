@@ -3,12 +3,11 @@
  * @description Componente CRUD en la aplicación.
  * @version 1.0.0
  * @date 2024-09-30
- * @author McKinstong
+ * @author EQUIPO-VENTISNOVA
  * @company Ventisnova
- * @license Copyright © 2024 Vebtisnova
+ * @license Copyright © 2024 Ventisnova
  * @notes Permite realizar operaciones CRUD en los artículos.
  */
-
 
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
@@ -18,22 +17,24 @@ import Navbar from "./Navbar";
 import { useAlert } from '../context/AlertContext';
 
 const AdminArticle = () => {
-  // Inicializa el contexto de alerta y las variables de estado
+  // Contexto de alerta para mostrar mensajes
   const { setAlert } = useAlert();
+  
+  // Variables de estado para manejar blogs, modos de edición, archivo de imagen y estado de carga
   const [blogs, setBlogs] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [currentBlog, setCurrentBlog] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Efecto que se ejecuta al montar el componente para obtener los blogs
+  // Ejecuta la función fetchBlogs al montar el componente para cargar los artículos
   useEffect(() => {
     fetchBlogs();
   }, []);
 
   /**
-   * Función para obtener los blogs desde Firestore.
-   * @returns {Promise<void>} No retorna nada, pero actualiza el estado con los blogs obtenidos.
+   * Obtiene la lista de blogs desde Firestore.
+   * Actualiza el estado con los blogs obtenidos.
    */
   const fetchBlogs = async () => {
     try {
@@ -42,42 +43,40 @@ const AdminArticle = () => {
         id: doc.id,
         ...doc.data()
       }));
-      setBlogs(data);
+      setBlogs(data); // Actualiza el estado con los blogs obtenidos
     } catch (error) {
       setAlert('Error al cargar los artículos: ' + error.message);
     }
   };
 
   /**
-   * Función para subir una imagen a Firebase Storage.
-   * @param {File} file - Archivo de imagen a subir.
-   * @returns {Promise<string|null>} URL de la imagen subida o null si no se proporciona un archivo.
+   * Sube una imagen a Firebase Storage y retorna su URL.
+   * @param {File} file - Archivo de imagen.
+   * @returns {Promise<string|null>} URL de la imagen subida o null si no hay imagen.
    */
   const uploadImage = async (file) => {
     if (!file) return null;
     const storageRef = ref(storage, 'blog-images/' + file.name);
-    await uploadBytes(storageRef, file);
-    return await getDownloadURL(storageRef);
+    await uploadBytes(storageRef, file); // Sube la imagen a Firebase Storage
+    return await getDownloadURL(storageRef); // Retorna la URL de descarga de la imagen
   };
 
   /**
-   * Función que maneja el envío del formulario para agregar o actualizar un blog.
+   * Maneja el envío del formulario para agregar o actualizar un blog.
    * @param {Event} event - Evento de envío del formulario.
-   * @returns {Promise<void>} No retorna nada, pero actualiza el estado según la operación realizada.
    */
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
+    event.preventDefault(); // Previene el comportamiento por defecto del formulario
+    setLoading(true); // Muestra el estado de carga
     const form = event.target;
 
     try {
       let imageUrl = currentBlog?.imagen;
-      // Si se ha seleccionado un archivo, se sube la imagen
       if (imageFile) {
-        imageUrl = await uploadImage(imageFile);
+        imageUrl = await uploadImage(imageFile); // Sube la imagen si es seleccionada
       }
 
-      // Se prepara el objeto de datos del nuevo blog
+      // Datos del nuevo o actualizado artículo
       const newBlog = {
         autor: form.autor.value,
         categoria: form.categoria.value,
@@ -89,17 +88,17 @@ const AdminArticle = () => {
         titulo: form.titulo.value
       };
 
-      // Se determina si se actualiza un blog existente o se añade uno nuevo
+      // Si estamos en modo edición, actualizamos el artículo, de lo contrario, lo creamos
       if (editMode) {
         await updateDoc(doc(db, 'blog', currentBlog.id), newBlog);
         setAlert('Artículo actualizado exitosamente!');
-        setEditMode(false);
+        setEditMode(false); // Sale del modo edición
       } else {
         await addDoc(collection(db, 'blog'), newBlog);
         setAlert('Artículo agregado exitosamente!');
       }
 
-      // Se reinicia el formulario y se actualiza la lista de blogs
+      // Reinicia el formulario y actualiza la lista de artículos
       form.reset();
       setImageFile(null);
       setCurrentBlog(null);
@@ -107,31 +106,30 @@ const AdminArticle = () => {
     } catch (error) {
       setAlert('Error: ' + error.message);
     } finally {
-      setLoading(false);
+      setLoading(false); // Desactiva el estado de carga
     }
   };
 
   /**
-   * Función que establece el blog actual para editar.
+   * Establece el blog actual en modo edición.
    * @param {Object} blog - Objeto del blog a editar.
    */
   const handleEdit = (blog) => {
     setCurrentBlog(blog);
-    setEditMode(true);
-    setImageFile(null);
+    setEditMode(true); // Activa el modo edición
+    setImageFile(null); // Reinicia la selección de archivo
   };
 
   /**
-   * Función que elimina un artículo.
-   * @param {string} id - ID del blog a eliminar.
-   * @returns {Promise<void>} No retorna nada, pero actualiza la lista de blogs tras la eliminación.
+   * Elimina un artículo de Firestore.
+   * @param {string} id - ID del artículo a eliminar.
    */
   const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
       try {
-        await deleteDoc(doc(db, 'blog', id));
+        await deleteDoc(doc(db, 'blog', id)); // Elimina el artículo
         setAlert('Artículo eliminado exitosamente!');
-        fetchBlogs();
+        fetchBlogs(); // Actualiza la lista de artículos
       } catch (error) {
         setAlert('Error al eliminar el artículo: ' + error.message);
       }
@@ -139,14 +137,14 @@ const AdminArticle = () => {
   };
 
   /**
-   * Función que maneja la selección de un archivo de imagen.
-   * @param {Event} event - Evento de cambio del input de archivo.
+   * Maneja el cambio de archivo para la imagen del artículo.
+   * @param {Event} event - Evento de selección de archivo.
    */
   const handleImageChange = (event) => {
-    setImageFile(event.target.files[0]);
+    setImageFile(event.target.files[0]); // Establece el archivo seleccionado
   };
 
-  // Renderiza el componente de administración de artículos
+  // Renderiza el formulario y la lista de artículos
   return (
     <div className="w-full min-h-screen">
       <Navbar />
@@ -223,22 +221,22 @@ const AdminArticle = () => {
           </form>
         </div>
         <div className="bg-customFormGreen rounded-lg shadow-lg p-6">
-          <h3 className="text-xl text-white font-semibold mb-4">Lista de Artículos</h3>
+          <h3 className="text-xl text-white mb-4">Lista de Artículos</h3>
           <ul className="space-y-4">
-            {blogs.map((blog) => (
-              <li key={blog.id} className="border-b pb-4">
-                <h4 className="text-l text-customGreen">{blog.titulo}</h4>
-                <p className="text-sm text-white mb-2">{blog.resumen}</p>
-                <div className="flex space-x-2">
-                  <button 
-                    onClick={() => handleEdit(blog)} 
-                    className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition duration-300"
+            {blogs.map(blog => (
+              <li key={blog.id} className="bg-teal-700 text-white p-4 rounded-lg shadow-lg">
+                <h4 className="text-2xl mb-2">{blog.titulo}</h4>
+                <p>{blog.resumen}</p>
+                <div className="mt-4">
+                  <button
+                    onClick={() => handleEdit(blog)}
+                    className="bg-teal-500 text-white py-1 px-3 rounded hover:bg-teal-600 transition duration-300 mr-2"
                   >
                     Editar
                   </button>
-                  <button 
-                    onClick={() => handleDelete(blog.id)} 
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-300"
+                  <button
+                    onClick={() => handleDelete(blog.id)}
+                    className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 transition duration-300"
                   >
                     Eliminar
                   </button>

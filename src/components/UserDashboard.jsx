@@ -1,3 +1,14 @@
+/**
+ * @file UserDashboard.jsx
+ * @description Componente del panel de usuario que permite la gestión del perfil.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente permite al usuario actualizar su nombre y contraseña, y también manejar la sesión.
+ */
+
 import React, { useState, useEffect } from 'react';
 import Navbar from "./Navbar";
 import { useAuth } from '../context/AuthContext';
@@ -5,21 +16,29 @@ import { updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthP
 import { NavLink } from 'react-router-dom';
 import { useAlert } from '../context/AlertContext';
 
+/**
+ * Componente del panel de usuario.
+ * @returns {JSX.Element} El dashboard del usuario.
+ */
 const UserDashboard = () => {
   const { setAlert } = useAlert();
-  const { user, logout, auth } = useAuth();
+  const { user, logout, auth } = useAuth(); // Obtiene el contexto de autenticación
   const [newName, setNewName] = useState(user ? user.displayName || user.email : '');
   const [newPassword, setNewPassword] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isGoogleUser, setIsGoogleUser] = useState(false);
 
+  // Efecto para determinar si el usuario inició sesión con Google
   useEffect(() => {
     if (user && user.providerData.length > 0) {
       setIsGoogleUser(user.providerData[0].providerId === 'google.com');
     }
   }, [user]);
 
+  /**
+   * Función para cerrar sesión del usuario.
+   */
   const handleLogout = async () => {
     try {
       await logout();
@@ -28,6 +47,10 @@ const UserDashboard = () => {
     }
   };
 
+  /**
+   * Función para re-autenticar al usuario con su contraseña actual.
+   * @param {string} currentPassword - La contraseña actual del usuario.
+   */
   const reauthenticate = async (currentPassword) => {
     const credential = EmailAuthProvider.credential(user.email, currentPassword);
     try {
@@ -37,14 +60,20 @@ const UserDashboard = () => {
     }
   };
 
+  /**
+   * Función para manejar el envío del formulario.
+   * @param {Event} e - El evento del formulario.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // Actualiza el nombre si es diferente
       if (newName !== user.displayName) {
         await updateProfile(user, { displayName: newName });
       }
 
+      // Actualiza la contraseña si no es un usuario de Google
       if (newPassword && !isGoogleUser) {
         await reauthenticate(currentPassword);
         await updatePassword(user, newPassword);
@@ -70,7 +99,7 @@ const UserDashboard = () => {
             Bienvenid@: {newName || user.email}
           </h2>
           <p className="text-white text-lg mt-2 text-left ml-[85px]">
-            Puedes modificár tu nombre o contraseña.
+            Puedes modificar tu nombre o contraseña.
           </p>
         </div>
         <div className="flex justify-center w-full">

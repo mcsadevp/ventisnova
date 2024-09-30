@@ -1,3 +1,14 @@
+/**
+ * @file BlogPost.jsx
+ * @description Componente para mostrar un blog específico basado en su slug.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente se encarga de recuperar y mostrar el contenido de un blog individual de Firebase, utilizando el slug para identificar el blog específico.
+ */
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
@@ -6,24 +17,33 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const BlogPost = () => {
+  // Extrae el slug de los parámetros de la URL
   const { slug } = useParams();
+  // Estado para almacenar los datos del blog
   const [blog, setBlog] = useState(null);
 
+  // Hook que se ejecuta al montar el componente o cambiar el slug
   useEffect(() => {
+    /**
+     * Función asíncrona para obtener el blog específico de Firebase.
+     * @returns {Promise<void>} No retorna ningún valor, actualiza el estado de blog.
+     */
     const fetchBlog = async () => {
       const querySnapshot = await getDocs(collection(db, 'blog'));
+      // Busca el blog que coincida con el slug
       const foundBlog = querySnapshot.docs.find((doc) => doc.data().slug === slug);
 
       if (foundBlog) {
-        setBlog(foundBlog.data());
+        setBlog(foundBlog.data()); // Actualiza el estado con los datos del blog encontrado
       } else {
-        console.log('No such document!');
+        console.log('No such document!'); // Manejo de error si no se encuentra el blog
       }
     };
 
-    fetchBlog();
-  }, [slug]);
+    fetchBlog(); // Llama a la función para obtener el blog
+  }, [slug]); // Dependencia: se ejecuta cuando cambia el slug
 
+  // Muestra un mensaje de carga mientras se obtienen los datos del blog
   if (!blog) return <div className='text-white text-center'>Cargando...</div>;
 
   return (

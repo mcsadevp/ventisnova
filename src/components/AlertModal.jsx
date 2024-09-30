@@ -3,7 +3,7 @@
  * @description Componente de modal para mostrar alertas en la aplicación.
  * @version 1.0.0
  * @date 2024-09-30
- * @author McKinstong
+ * @author EQUIPO-VENTISNOVA
  * @company Ventisnova
  * @license Copyright © 2024 Vebtisnova
  * @notes Este componente se utiliza para mostrar mensajes de alerta al usuario y requiere un arreglo de mensajes.

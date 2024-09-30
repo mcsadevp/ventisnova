@@ -1,16 +1,31 @@
+/**
+ * @file Navbar.jsx
+ * @description Componente de la barra de navegación.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente muestra la barra de navegación con enlaces y un menú desplegable para móviles.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { IoClose, IoMenu, IoPersonOutline } from "react-icons/io5";
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/Logo.png';
 import { useAuth } from '../context/AuthContext'; // Importa el hook de autenticación
 
+/**
+ * Componente de la barra de navegación.
+ * @returns {JSX.Element} La barra de navegación con enlaces y menús.
+ */
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(true);
-  const { user } = useAuth(); // Obtén el usuario del contexto
+  const [isOpen, setIsOpen] = useState(false); // Estado para el menú móvil abierto/cerrado
+  const [showNavbar, setShowNavbar] = useState(true); // Estado para mostrar/ocultar la barra de navegación
+  const { user } = useAuth(); // Obtiene el usuario del contexto de autenticación
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
+    let lastScrollY = window.scrollY; // Guarda la posición de desplazamiento anterior
 
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -20,10 +35,10 @@ const Navbar = () => {
         // Si el usuario está desplazándose hacia arriba
         setShowNavbar(true);
       }
-      lastScrollY = window.scrollY;
+      lastScrollY = window.scrollY; // Actualiza la posición de desplazamiento
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll); // Agrega el evento de desplazamiento
 
     // Limpieza del event listener cuando el componente se desmonta
     return () => {
@@ -31,6 +46,9 @@ const Navbar = () => {
     };
   }, []);
 
+  /**
+   * Alterna el estado del menú móvil.
+   */
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -41,11 +59,13 @@ const Navbar = () => {
         {/* Logo y enlaces */}
         <div className="flex items-center space-x-8">
           {/* Logo */}
-          <NavLink to={`/`}><img src={logo} className='w-[200px] h-[20px]' alt="Logo VentisNova" /></NavLink>
+          <NavLink to={`/`}>
+            <img src={logo} className='w-[200px] h-[20px]' alt="Logo VentisNova" />
+          </NavLink>
           {/* Enlaces de navegación para pantallas medianas y grandes */}
           <div className="hidden md:flex md:items-center md:pl-10">
-          <NavLink to={`/`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customLightGreen" : "px-2 text-white rounded-md transition-all hover:text-customLightGreen"}>
-            Inicio
+            <NavLink to={`/`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customLightGreen" : "px-2 text-white rounded-md transition-all hover:text-customLightGreen"}>
+              Inicio
             </NavLink>
             <p className='px-2 py-2 text-white'>|</p>
             <NavLink to={`/mentorias-y-tutorias`} className={({ isActive }) => isActive ? "px-2 rounded-md transition-all text-customLightGreen" : "px-2 text-white rounded-md transition-all hover:text-customLightGreen"}>
@@ -79,7 +99,7 @@ const Navbar = () => {
       {/* Menú desplegable para móviles */}
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-60 opacity-100' : ' max-h-0 opacity-0'} md:hidden bg-black/25`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-        <NavLink to={'/'} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white hover:text-customLightGreen"}>
+          <NavLink to={'/'} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white hover:text-customLightGreen"}>
             Inicio
           </NavLink>
           <NavLink to={'/mentorias-y-tutorias'} className={({ isActive }) => isActive ? "block px-3 py-2 rounded-md text-base text-customGreen" : "block px-3 py-2 rounded-md text-base text-white hover:text-customLightGreen"}>

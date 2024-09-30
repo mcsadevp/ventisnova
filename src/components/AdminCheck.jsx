@@ -3,10 +3,10 @@
  * @description Componente que verifica si un usuario tiene privilegios de admin en la aplicación.
  * @version 1.0.0
  * @date 2024-09-30
- * @author McKinstong
+ * @author EQUIPO-VENTISNOVA
  * @company Ventisnova
  * @license Copyright © 2024 Vebtisnova
- * @notes Verifica la propiedad isAdmin.
+ * @notes Verifica si la propiedad isAdmin es True.
  */
 
 

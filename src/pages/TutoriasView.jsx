@@ -1,14 +1,25 @@
-import { IoCalendarClearOutline } from "react-icons/io5"
-import Navbar from "../components/Navbar"
-import { FaRegClock, FaWhatsapp } from "react-icons/fa"
-import image15 from "../assets/image 15.png"
-import semiCirculos from '../assets/semi-circulo.jpeg';
-import FAQ from "../components/FAQ"
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react'
-import Footer from "../components/Footer";
-import FloatButtonWhatsapp from "../components/FloatButtonWhatsapp";
+/**
+ * @file TutoriasView.jsx
+ * @description Componente para la vista de tutorías, incluyendo detalles sobre el curso, beneficios y preguntas frecuentes.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente presenta información sobre las tutorías, características del curso, beneficios y un formulario de contacto para inscripciones.
+ */
 
+import { IoCalendarClearOutline } from "react-icons/io5";
+import Navbar from "../components/Navbar";
+import { FaRegClock, FaWhatsapp } from "react-icons/fa";
+import image15 from "../assets/image 15.png";
+import semiCirculos from '../assets/semi-circulo.jpeg';
+import FAQ from "../components/FAQ";
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import Footer from "../components/Footer";
+
+// Datos para las preguntas frecuentes
 const faqData = [
   {
     question: '¿Cómo es la modalidad de cursada?',
@@ -16,7 +27,7 @@ const faqData = [
   },
   {
     question: '¿Cuáles son los medios de pagos?',
-    answer: ' Podés abonar tu curso en efectivo, a través de transferencia bancaria o en plazos de pago.'
+    answer: 'Podés abonar tu curso en efectivo, a través de transferencia bancaria o en plazos de pago.'
   },
   {
     question: '¿Necesito conocimiento previo para inscribirme?',
@@ -30,34 +41,32 @@ const faqData = [
     question: '¿Qué tipo de materiales de apoyo ofrecen?',
     answer: 'Además de los encuentros online, vas a disponer de todo el material utilizado en las clases, así como recomendaciones de lectura alternativa.'
   },
-]
+];
 
 const TutoriasView = () => {
   useEffect(() => {
     window.scrollTo(0, 0);  // Mueve el scroll a la parte superior
-  }, [])
+  }, []);
+
   const navigate = useNavigate();
 
   const handleNavigation = () => {
     navigate('/contact', { state: { mensaje: "Quiero inscribirme en las Tutorías" } });
   };
 
-
-
   return (
     <div>
-      {/* Hero & nabvar*/}
-      <div className='bg-cover' style={{ backgroundImage: `url(${ semiCirculos })` }}>
+      {/* Hero & navbar */}
+      <div className='bg-cover' style={{ backgroundImage: `url(${semiCirculos})` }}>
         <Navbar />
-        <div className=' w-full py-20 px-24'>
-          <h1 className='text-white md:text-5xl text-3xl font-bold '>TUTORÍAS</h1>
+        <div className='w-full py-20 px-24'>
+          <h1 className='text-white md:text-5xl text-3xl font-bold'>TUTORÍAS</h1>
           <ul className='mt-8 space-y-2 list-disc text-white md:pl-5 pl-3'>
             <li className='md:max-w-[750px]'>Guía y apoyo continuo de un tu mentor experimentado para el desarrollo de tus proyectos, toma de desiciones y crecimiento profesional.</li>
             <li>Teórico.</li>
             <li>Duración: 11 semanas</li>
             <div className='flex items-center'>
               <li>Online en vivo</li>
-
               <div className='w-4 h-4 bg-red-300 rounded-full flex justify-center items-center ml-1'>
                 <div className='w-2 h-2 bg-red-600 rounded-full'></div>
               </div>
@@ -76,7 +85,7 @@ const TutoriasView = () => {
         {/* Contenedor principal con diseño de columna en móviles y fila en pantallas más grandes */}
         <div className="relative flex flex-col md:flex-row items-center md:items-start h-full">
           {/* Imagen de fondo */}
-          <div className="absolute inset-0 w-full h-full ">
+          <div className="absolute inset-0 w-full h-full">
             <img
               src={image15}
               alt="Video conferencia"
@@ -93,7 +102,7 @@ const TutoriasView = () => {
           </div>
         </div>
       </div>
-      {/* Caracteristicas */}
+      {/* Características */}
       <div className='container mx-auto w-[380px] md:w-[850px] md:h-[306px] bg-custom-gradient-black p-10 text-white flex flex-col mt-20 rounded'>
         <h1 className='text-3xl'>Características</h1>
         <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
@@ -151,7 +160,10 @@ const TutoriasView = () => {
             </div>
           </div>
 
-          <button onClick={() => window.location.href = 'https://wa.me/5491166850200?text=Hola%20me%20gustaría%20saber%20más%20información%20sobre%20las%20tutorías.'} className='bg-customGreen hover:bg-emerald-500 text-black font-bold py-2 md:px-20 px-12 rounded-full flex justify-center items-center mx-auto transition-all'>
+          <button 
+            onClick={() => window.location.href = 'https://wa.me/5491166850200?text=Hola%20me%20gustaría%20saber%20más%20información%20sobre%20las%20tutorías.'} 
+            className='bg-customGreen hover:bg-emerald-500 text-black font-bold py-2 md:px-20 px-12 rounded-full flex justify-center items-center mx-auto transition-all'
+          >
             Reserva tu lugar
             <FaWhatsapp size={22} className='ml-2' />
           </button>
@@ -163,7 +175,7 @@ const TutoriasView = () => {
           <h1 className='text-3xl'>Beneficios</h1>
           <ul className='mt-8 space-y-8 list-disc text-white md:pl-5 pl-3'>
             <li>Aprendizaje enfocado y eficiente.</li>
-            <li>Atención personalizada para resolver dudas y profundizar em temas específicos.</li>
+            <li>Atención personalizada para resolver dudas y profundizar en temas específicos.</li>
             <li>Flexibilidad para aprender a tu propio ritmo y según tu disponibilidad.</li>
           </ul>
         </div>
@@ -174,7 +186,7 @@ const TutoriasView = () => {
       </div>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default TutoriasView
+export default TutoriasView;

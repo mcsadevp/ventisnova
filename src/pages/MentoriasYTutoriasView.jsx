@@ -1,3 +1,14 @@
+/**
+ * @file MentoriasYTutoriasView.jsx
+ * @description Componente para la vista de mentorías y tutorías que muestra información detallada sobre los cursos, incluyendo una sección FAQ.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente incluye una vista detallada de los cursos de mentorías y tutorías, opciones de registro, y preguntas frecuentes.
+ */
+
 import image10 from '../assets/image 10.png';
 import campaingCreators from '../assets/campaign-creators-qCi_MzVODoU-unsplash 1.png';
 import image13 from '../assets/image 13.png';

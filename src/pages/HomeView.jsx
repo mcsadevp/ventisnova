@@ -1,3 +1,15 @@
+/**
+ * @file HomeView.jsx
+ * @description Componente para la vista principal de la aplicación que muestra información sobre cursos, mentorías y la misión y visión de la empresa.
+ * @version 1.0.0
+ * @date 2024-09-30
+ * @author EQUIPO-VENTISNOVA
+ * @company Ventisnova
+ * @license Copyright © 2024 Ventisnova
+ * @notes Este componente sirve como la página de inicio de la aplicación, integrando varios elementos visuales y funcionales.
+ */
+
+
 import image6 from '../assets/image 6.png';
 import image5 from '../assets/image 5.png';
 import image11 from '../assets/image 11.png';
@@ -17,7 +29,7 @@ const HomeView = () => {
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-32 py-12">
           {/* Text Section */}
           <div className="md:w-1/2">
-            <motion.h2 whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
+          <motion.h2 whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-3xl font-semibold text-white leading-tight md:text-5xl">
               Potencia tus habilidades <br />
               Simplifica tu mundo
             </motion.h2>
@@ -28,14 +40,14 @@ const HomeView = () => {
               El camino hacia tu emprendimiento soñado <br />
               empieza acá.
             </motion.p>
-            <NavLink to="/register">
+            <NavLink to="/mentorias-y-tutorias">
               <motion.button initial={{ opacity: 1, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} className="bg-white text-black font-semibold rounded-md px-6 py-4 mt-8 hover: bg-white to bg-cus">
                 Potenciate ahora
               </motion.button>
             </NavLink>
           </div>
           {/* Image Section */}
-          <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
+          <div className="w-full md:w-1/2 lg:w-1/2  mt-8 md:mt-0 flex justify-center relative h-[400px] custom-xl:block hidden">
             <div className="absolute -inset-5 bottom-0 p-4 rounded-full">
               <motion.img initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} src={image5} alt="Person with laptop" className="relative z-10 h-auto max-w-full lg:max-w-[100%]" />
             </div>
@@ -86,7 +98,7 @@ const HomeView = () => {
       {/* container de habilidades y tutorias */}
       <div className="bg-customDarkGreen p-8 flex justify-center items-center ">
         {/* First Container */}
-        <motion.div initial={{ opacity: 0, x: 300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className=" w-full max-w-6xl grid md:grid-cols-2 gap-8 mb-0 border border-white  rounded-lg p-6">
+        <motion.div initial={{ opacity: 0, x: -300 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }} whileInView={{ opacity: 1, x: 0 }} className=" w-full max-w-6xl grid md:grid-cols-2 gap-8 mb-0 border border-white  rounded-lg p-6">
           {/* Left Text Section */}
           <div className=" flex flex-col justify-center rounded-lg">
             <h2 className="text-3xl text-white mb-4 ">Habilidades Digitales</h2>
