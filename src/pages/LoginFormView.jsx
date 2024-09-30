@@ -1,19 +1,24 @@
-import React from "react";
 import { useAuth } from "../context/AuthContext";
 import LoginForm from "../components/LoginForm";
-import backgroundImage from "../assets/page-login.png";
+import backgroundImage from "../assets/bg-form6.jpg";
+import Navbar from "../components/Navbar"; 
 
 function LoginFormView() {
   const auth = useAuth();
-  
   return (
     <div 
-      className="register-view w-screen h-screen bg-cover bg-center flex"
-      style={{
-        backgroundImage: `url(${backgroundImage})`
+      className={`h-screen flex flex-col flex-1 bg-center bg-no-repeat`} 
+      style={{ 
+        backgroundImage: `url(${backgroundImage})`,  
+        backgroundSize: 'cover'
       }}
     >
-      <LoginForm auth={auth} />
+      <Navbar />
+      <div className="flex flex-1 items-center justify-center">
+        <div> 
+          <LoginForm auth={auth} />
+        </div>
+      </div>
     </div>
   );
 }

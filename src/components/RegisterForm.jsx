@@ -1,25 +1,36 @@
 import React, { useState } from "react";
 import { updateProfile } from "firebase/auth";
-import { useAuth } from "../context/AuthContext"; // Importa useAuth
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useAuth } from "../context/AuthContext";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAlert } from '../context/AlertContext'; 
 
 function RegisterForm() {
+  const { setAlert } = useAlert();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  
-  const { register, loginWithGoogle } = useAuth(); // Usa useAuth para obtener las funciones necesarias
-  const navigate = useNavigate(); // Usa useNavigate para redirigir
+
+  const { register, loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
+
+  const isPasswordValid = (password) => {
+    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/;
+    return regex.test(password);
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden");
+      setAlert("Las contraseñas no coinciden");
+      return;
+    }
+    if (!isPasswordValid(password)) {
+      setAlert("La contraseña debe tener al menos 8 caracteres, al menos una letra mayúscula, un número y un símbolo.");
       return;
     }
     try {
-      const result = await register(email, password);
+      const result = await register(email, password, username); // Pasa el username aquí
       let user;
       if (result && result.user) {
         user = result.user;
@@ -28,33 +39,34 @@ function RegisterForm() {
       } else {
         throw new Error("No se pudo obtener el usuario después del registro");
       }
-      await updateProfile(user, { displayName: username });
+      await updateProfile(user, { displayName: username || email }); // Actualiza displayName si es necesario
+      // Limpiar los campos después del registro
       setUsername("");
       setEmail("");
       setPassword("");
       setConfirmPassword("");
-      alert("Registro exitoso");
-      navigate("/dashboard"); 
+      setAlert("Registro exitoso");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Error al registrar: " + error.message);
+      setAlert("Error al registrar: " + error.message);
     }
   };
 
   const handleGoogleSignIn = async () => {
     try {
       await loginWithGoogle();
-      alert("Inicio de sesión con Google exitoso");
-      navigate("/dashboard"); // Redirige al dashboard después de iniciar sesión con Google
+      setAlert("Inicio de sesión con Google exitoso");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error);
-      alert("Error al iniciar sesión con Google: " + error.message);
+      setAlert("Error al iniciar sesión con Google: " + error.message);
     }
   };
 
   return (
-    <div className="flex flex-col items-start justify-center bg-transparent text-white w-[304px] h-[430px] ml-[80px] mt-[50px]">
-      <h2 className="text-xl font-bold mb-6">Registrarse</h2>
+    <div className="bg-white bg-opacity-10 p-10 md:mt-12 mt-14 rounded-lg shadow-lg max-w-lg w-full md:p-10 md:px-32 mx-5">
+      <h2 className="text-xl font-bold text-white mb-6">Registrarse</h2>
       <form className="w-full flex flex-col items-center" onSubmit={handleRegister}>
         <input
           type="text"
@@ -84,11 +96,14 @@ function RegisterForm() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit" className="w-full p-2 bg-green-600 rounded cursor-pointer mb-4">
+        <button type="submit" className="w-full p-2 bg-customLightGreen rounded cursor-pointer mb-4">
           Registrarse
         </button>
-        <a href="#" className="text-sm text-gray-300 mt-4">¿Olvidaste tu contraseña?</a>
-        <a href="#" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</a>
+        <NavLink to="/perfil" className="text-sm text-gray-300 mt-4">
+          <span className="underline">Olvidé mi</span>
+          <span className="text-green-300 underline"> contraseña</span>
+        </NavLink>
+        <NavLink to="/perfil" className="text-sm text-gray-300 mt-2">¿Ya tienes cuenta? Inicia sesión</NavLink>
         <button
           type="button"
           className="w-full mt-5 p-2 border border-white rounded text-white bg-transparent flex items-center justify-center"
