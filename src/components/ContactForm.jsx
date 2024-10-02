@@ -21,7 +21,7 @@ import { useForm, ValidationError } from '@formspree/react';
  */
 const ContactForm = () => {
   const { setAlert } = useAlert(); // Hook para mostrar alertas
-  const [state, handleSubmit] = useForm("xzzpnrqg"); // Hook de Formspree para manejar el formulario
+  const [state, handleSubmit] = useForm("mkgwddrg"); // Hook de Formspree para manejar el formulario
   const [isAlertShown, setIsAlertShown] = useState(false); // Estado para controlar si la alerta ya fue mostrada
 
   // Mostrar mensaje de éxito usando useEffect cuando el formulario se envía correctamente
