@@ -118,6 +118,7 @@ const AdminArticle = () => {
     setCurrentBlog(blog);
     setEditMode(true); // Activa el modo edición
     setImageFile(null); // Reinicia la selección de archivo
+    window.scrollTo(0, 0);
   };
 
   /**
